@@ -10,9 +10,27 @@ const Home: NextPage = () => {
         <title>Simple Fit</title>
         <meta
           name="description"
-          content="Simple, fresh recipes at your fingertips."
+          content="Simple, tailored workouts at your fingertips."
         />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-neutral-900 to-stone-900">
         <div className="container flex flex-col items-center justify-center px-4 py-16 ">
