@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { SVGProps } from "react";
+import type { SVGProps } from "react";
 import ExternalLink from "./utils/ExternalLink";
 import NavLink from "./utils/NavLink";
 
