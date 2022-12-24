@@ -1,14 +1,23 @@
 import exerciseData from "../src/libs/exercises.json";
 import { prisma } from "../src/server/db/client";
+import { z } from "zod";
 
-async function seedExercise(exercise) {
-  console.log(exercise);
-  console.log(exercise.tags);
+export const exerciseRaw = z.object({
+  name: z.string(),
+  difficulty: z.string(),
+  tags: z.array(z.string()),
+  sets: z.number(),
+  reps: z.number().or(z.string()),
+  rest: z.number(),
+  exampleLink: z.string(),
+});
+type RawExercise = z.infer<typeof exerciseRaw>;
+
+async function seedExercise(exercise: RawExercise) {
   const connectOrCreateTags = exercise.tags.map((tag) => ({
     create: { name: tag },
     where: { name: tag },
   }));
-  console.log(connectOrCreateTags);
   const exerciseEntry = await prisma.exercise.upsert({
     where: { name: exercise.name },
     update: {
@@ -37,7 +46,7 @@ async function seedExercise(exercise) {
   console.log(exerciseEntry);
 }
 
-const exercises = exerciseData.exercises;
+const exercises: RawExercise[] = exerciseData.exercises;
 Promise.all(
   exercises.map(async (exercise) => {
     await seedExercise(exercise).catch(async (e) => {

@@ -16,3 +16,41 @@
     text-shadow: none;
   }
 }
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  button,
+  a {
+    font-family: Josefin Sans, system-ui, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+  }
+  html {
+    font-family: Lato, system-ui, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+@layer components {
+  .label {
+    @apply text-xs font-medium;
+  }
+  .error-label {
+    @apply text-xs font-medium text-red-500;
+  }
+  .input {
+    @apply block w-full appearance-none rounded-md border border-zinc-200 bg-zinc-50 px-5 py-3 text-zinc-900  placeholder-zinc-400 focus:border-amber-600 focus:bg-zinc-50 focus:outline-none focus:ring-amber-600 dark:bg-zinc-900/80 dark:bg-zinc-900/80 dark:text-caramel-100 sm:text-base;
+  }
+  .error-input {
+    @apply block w-full appearance-none rounded-md border border-red-500 bg-zinc-50 px-5 py-3 text-zinc-900  placeholder-zinc-400 focus:bg-zinc-50 focus:outline-none focus:ring-amber-600 dark:bg-zinc-900/80 dark:bg-zinc-900/80 dark:text-caramel-100 sm:text-base;
+  }
+}

@@ -10,6 +10,16 @@ datasource db {
   relationMode = "prisma"
 }
 
+// generator trpc {
+//   provider           = "prisma-trpc-generator"
+//   output             = "../src/pages/api"
+//   withMiddleware     = false
+//   withShield         = false
+//   contextPath        = "../context"
+//   isGenerateSelect   = true
+//   isGenerateInclude  = true
+// }
+
 // Necessary for Next auth
 model Account {
   id                String  @id @default(cuid())
