@@ -34,7 +34,7 @@ const Home: NextPage = () => {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-neutral-900 to-stone-900">
         <div className="container flex flex-col items-center justify-center px-4 py-16 ">
-          <p className="text-xxs border-t-2 p-1 uppercase italic tracking-wide text-neutral-50 sm:text-sm text-shadow shadow-amber-600/50">
+          <p className="text-shadow border-t-2 p-1 text-xxs uppercase italic tracking-wide text-neutral-50 shadow-amber-600/50 sm:text-sm">
             – Coming Soon –
           </p>
           <h1 className="text-shadow-lg mb-16 mt-4 text-5xl font-extrabold tracking-tight text-neutral-50 shadow-amber-600/30 sm:text-[5rem]">

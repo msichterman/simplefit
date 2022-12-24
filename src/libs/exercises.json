@@ -1,0 +1,1030 @@
+{
+  "exercises": [
+    {
+      "name": "Military Press",
+      "difficulty": "advanced",
+      "sets": 4,
+      "reps": 6,
+      "rest": 90,
+      "tags": ["shoulders", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/military-press.html"
+    },
+    {
+      "name": "Dumbbell Deadlift",
+      "difficulty": "advanced",
+      "sets": 4,
+      "reps": 6,
+      "rest": 90,
+      "tags": ["back", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-deadlift.html"
+    },
+    {
+      "name": "Seated Arnold Press",
+      "difficulty": "advanced",
+      "sets": 4,
+      "reps": 6,
+      "rest": 90,
+      "tags": ["shoulders", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/seated-arnold-press.html"
+    },
+    {
+      "name": "Dumbbell Lateral Raise",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 12,
+      "rest": 60,
+      "tags": ["shoulders", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html"
+    },
+    {
+      "name": "Bent Over Barbell Row",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/bent-over-barbell-row.html"
+    },
+    {
+      "name": "Dumbbell Pullover",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 12,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-pullover.html"
+    },
+    {
+      "name": "Stiff Leg Deadlift (Romanian Deadlift)",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 12,
+      "rest": 60,
+      "tags": ["back", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/stiff-leg-deadlift-aka-romanian-deadlift.html"
+    },
+    {
+      "name": "One Arm Dumbbell Row",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/one-arm-dumbbell-row.html"
+    },
+    {
+      "name": "Bent Over Dumbbell Row",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/bent-over-dumbbell-row.html"
+    },
+    {
+      "name": "Deadlifts",
+      "difficulty": "advanced",
+      "sets": 4,
+      "reps": 6,
+      "rest": 90,
+      "tags": ["back", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/deadlifts.html"
+    },
+    {
+      "name": "Trap Bar Deadlift",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/trap-bar-deadlift"
+    },
+    {
+      "name": "Squat",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/squat.html"
+    },
+    {
+      "name": "Front Squat",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/front-squat.html"
+    },
+    {
+      "name": "Barbell Bench Press",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["chest", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/barbell-bench-press.html"
+    },
+    {
+      "name": "Upright Row",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["shoulders", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/upright-row.html"
+    },
+    {
+      "name": "EZ Bar Skullcrusher",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["triceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/ez-bar-skullcrusher.html"
+    },
+    {
+      "name": "Standing Dumbbell Curl",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["biceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/standing-dumbbell-curl.html"
+    },
+    {
+      "name": "Leg Curl",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/leg-curl.html"
+    },
+    {
+      "name": "Abdominal Barbell Rollouts",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["abs", "core", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/abdominal-barbell-rollouts.html"
+    },
+    {
+      "name": "Romanian Deadlift",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/romanian-deadlift"
+    },
+    {
+      "name": "Seated Shoulder Press",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["shoulders", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/seated-shoulder-press.html"
+    },
+    {
+      "name": "Wide Grip Pull Up",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/wide-grip-pull-up.html"
+    },
+    {
+      "name": "Smith Machine Bodyweight Row",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/smith-machine-bodyweight-row.html"
+    },
+    {
+      "name": "Chest Dip",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["chest", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/chest-dip.html"
+    },
+    {
+      "name": "Barbell Shrug",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["shoulders", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/barbell-shrug.html"
+    },
+    {
+      "name": "Seated Calf Raise",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/seated-calf-raise.html"
+    },
+    {
+      "name": "Plank",
+      "difficulty": "beginner",
+      "sets": 3,
+      "reps": "30 sec",
+      "rest": 60,
+      "tags": ["core", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/hover.html"
+    },
+    {
+      "name": "Incline Dumbbell Bench Press",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["chest", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/incline-dumbbell-bench-press.html"
+    },
+    {
+      "name": "Tricep Extension",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["triceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/tricep-extension.html"
+    },
+    {
+      "name": "Standing Barbell Curl",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["biceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/standing-barbell-curl.html"
+    },
+    {
+      "name": "Dumbbell Hamstring Curl",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-hamstring-curl.html"
+    },
+    {
+      "name": "Dumbbell Lunge",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-lunge.html"
+    },
+    {
+      "name": "Dumbbell Step Up",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-step-up.html"
+    },
+    {
+      "name": "Barbell Hip Thrust",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/barbell-hip-thrust"
+    },
+    {
+      "name": "Standing Glute Kickback",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/standing-glute-kickback.html"
+    },
+    {
+      "name": "Lat Pull Down",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/lat-pull-down.html"
+    },
+    {
+      "name": "Seated Row",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/seated-row.html"
+    },
+    {
+      "name": "Two Arm Standing Dumbbell Extension",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["triceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/two-arm-standing-dumbbell-extension.html"
+    },
+    {
+      "name": "Cable Curl",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["biceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/cable-curl.html"
+    },
+    {
+      "name": "Dumbbell Goblet Squat",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-goblet-squat"
+    },
+    {
+      "name": "Dumbbell Stiff Leg Deadlift",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-stiff-leg-deadlift.html"
+    },
+    {
+      "name": "Wide Smith Machine Squat",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/wide-smith-machine-squat.html"
+    },
+    {
+      "name": "Glute Kick Back",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/glute-kick-back.html"
+    },
+    {
+      "name": "Dumbbell Bench Press",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["chest", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-bench-press.html"
+    },
+    {
+      "name": "Pec Dec",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["chest", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/pec-dec.html"
+    },
+    {
+      "name": "Seated Dumbbell Press",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["shoulders", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/seated-dumbbell-press.html"
+    },
+    {
+      "name": "Good Mornings",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/good-mornings.html"
+    },
+    {
+      "name": "Leg Extension",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/leg-extension.html"
+    },
+    {
+      "name": "Incline Dumbbell Curl",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["biceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/incline-dumbbell-curl.html"
+    },
+    {
+      "name": "Incline Skullcrusher",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["triceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/incline-skullcrusher.html"
+    },
+    {
+      "name": "Lying Floor Leg Raise",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["abs", "core", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/lying-floor-leg-raise.html"
+    },
+    {
+      "name": "Floor Crunch (Legs on Bench)",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["abs", "core", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/floor-crunch-legs-on-bench.html"
+    },
+    {
+      "name": "Side Crunch",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["abs", "core", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/side-crunch.html"
+    },
+    {
+      "name": "Dumbbell Floor Press",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["chest", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-floor-press.html"
+    },
+    {
+      "name": "Standing Dumbbell Press",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["shoulders", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/standing-dumbbell-press.html"
+    },
+    {
+      "name": "Bent Over Dumbbell Kickback",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["triceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/bent-over-dumbbell-kickback.html"
+    },
+    {
+      "name": "Dumbbell Rear Lunge",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-rear-lunge.html"
+    },
+    {
+      "name": "Frog Squat",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/frog-squat.html"
+    },
+    {
+      "name": "Seated Dumbbell Calf Raise",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/seated-dumbbell-calf-raise.html"
+    },
+    {
+      "name": "Weighted Crunch",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["abs", "core", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/weighted-crunch.html"
+    },
+    {
+      "name": "Side Plank",
+      "difficulty": "beginner",
+      "sets": 3,
+      "reps": "30 sec (each)",
+      "rest": 60,
+      "tags": ["abs", "core", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/side-hover.html"
+    },
+    {
+      "name": "Tripod Dumbbell Row",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/tripod-dumbbell-row"
+    },
+    {
+      "name": "Reverse Grip Bent Over Dumbbell Row",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/reverse-grip-bent-over-dumbbell-row.html"
+    },
+    {
+      "name": "Standing Hammer Curl",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["biceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/standing-hammer-curl.html"
+    },
+    {
+      "name": "Dumbbell Squat",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-squat.html"
+    },
+    {
+      "name": "Dumbbell Split Squat",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["legs", "lower body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-split-squat"
+    },
+    {
+      "name": "Dumbbell Side Bends",
+      "difficulty": "beginner",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["abs", "core", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-side-bends.html"
+    },
+    {
+      "name": "Chest Supported Dumbbell Row",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["back", "upper body", "compound"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/chest-supported-dumbbell-row"
+    },
+    {
+      "name": "Hammer Curl Across the Body",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["biceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/hammer-curl-across-the-body.html"
+    },
+    {
+      "name": "Dumbbell Shrugs",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["traps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/dumbbell-shrugs.html"
+    },
+    {
+      "name": "EZ Bar Preacher Curl",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["biceps", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/ez-bar-preacher-curl.html"
+    },
+    {
+      "name": "Barbell Wrist Curl",
+      "difficulty": "intermediate",
+      "sets": 3,
+      "reps": 8,
+      "rest": 60,
+      "tags": ["forearms", "upper body", "isolation"],
+      "exampleLink": "https://www.muscleandstrength.com/exercises/barbell-wrist-curl.html"
+    },
+    {
+      "name": "Machine Bench Press",
+      "difficulty": "intermediate",
+      "tags": ["chest", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/hammer-strength-bench-press.html"
+    },
+    {
+      "name": "Bent Over Dumbbell Reverse Fly",
+      "difficulty": "intermediate",
+      "tags": ["shoulders", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/bent-over-dumbbell-reverse-fly.html"
+    },
+    {
+      "name": "Close Grip Bench Press",
+      "difficulty": "intermediate",
+      "tags": ["chest", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/close-grip-bench-press.html"
+    },
+    {
+      "name": "Overhead Dumbbell Tricep Extension",
+      "difficulty": "intermediate",
+      "tags": ["triceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/two-arm-dumbbell-extension.html"
+    },
+    {
+      "name": "45 Degree Leg Press",
+      "difficulty": "intermediate",
+      "tags": ["legs", "lower body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/45-degree-leg-press.html"
+    },
+    {
+      "name": "Incline Bench Press",
+      "difficulty": "intermediate",
+      "tags": ["chest", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/incline-bench-press.html"
+    },
+    {
+      "name": "Smith Machine Bench Press",
+      "difficulty": "intermediate",
+      "tags": ["chest", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/smith-machine-bench-press.html"
+    },
+    {
+      "name": "Cable Crossovers (Upper Chest)",
+      "difficulty": "intermediate",
+      "tags": ["chest", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/cable-crossovers-%28upper-chest%29.html"
+    },
+    {
+      "name": "Incline Dumbbell Flys",
+      "difficulty": "intermediate",
+      "tags": ["chest", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/incline-dumbbell-flys.html"
+    },
+    {
+      "name": "Tricep Bench Dip",
+      "difficulty": "beginner",
+      "tags": ["triceps", "upper body", "bodyweight"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/tricep-bench-dip.html"
+    },
+    {
+      "name": "Overhead Barbell Extension",
+      "difficulty": "intermediate",
+      "tags": ["triceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/overhead-barbell-extension.html"
+    },
+    {
+      "name": "Cable Tricep Extension with V-Bar",
+      "difficulty": "intermediate",
+      "tags": ["triceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/cable-tricep-extension-with-v-bar.html"
+    },
+    {
+      "name": "One Arm Dumbbell Extension",
+      "difficulty": "intermediate",
+      "tags": ["triceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/one-arm-dumbbell-extension.html"
+    },
+    {
+      "name": "Bent Over Row",
+      "difficulty": "intermediate",
+      "tags": ["back", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/bent-over-row.html"
+    },
+    {
+      "name": "EZ Bar Curl",
+      "difficulty": "intermediate",
+      "tags": ["biceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/ez-bar-curl.html"
+    },
+    {
+      "name": "Seated Dumbbell Curl",
+      "difficulty": "intermediate",
+      "tags": ["biceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/seated-dumbbell-curl.html"
+    },
+    {
+      "name": "Concentration Curl",
+      "difficulty": "intermediate",
+      "tags": ["biceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/concentration-cur.html"
+    },
+    {
+      "name": "Push Press",
+      "difficulty": "intermediate",
+      "tags": ["shoulders", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/push-press"
+    },
+    {
+      "name": "Seated Barbell Press Behind Neck",
+      "difficulty": "intermediate",
+      "tags": ["shoulders", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/seated-barbell-press-behind-neck.html"
+    },
+    {
+      "name": "Smith Machine Shoulder Press",
+      "difficulty": "intermediate",
+      "tags": ["shoulders", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/smith-machine-shoulder-press.html"
+    },
+    {
+      "name": "Two Arm Cable Lateral Raise",
+      "difficulty": "intermediate",
+      "tags": ["shoulders", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/two-arm-cable-lateral-raise.html"
+    },
+    {
+      "name": "Machine Reverse Fly",
+      "difficulty": "intermediate",
+      "tags": ["shoulders", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/machine-reverse-fly"
+    },
+    {
+      "name": "Smith Machine Shrug",
+      "difficulty": "intermediate",
+      "tags": ["traps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/smith-machine-shrug.html"
+    },
+    {
+      "name": "One Arm Seated Dumbbell Wrist Curl",
+      "difficulty": "intermediate",
+      "tags": ["forearms", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/one-arm-seated-dumbbell-wrist-curl.html"
+    },
+    {
+      "name": "Standing Smith Machine Wrist Curl (Behind Back)",
+      "difficulty": "intermediate",
+      "tags": ["forearms", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/standing-smith-machine-wrist-curl-%28behind-back%29.html"
+    },
+    {
+      "name": "Barbell Lunge",
+      "difficulty": "intermediate",
+      "tags": ["legs", "lower body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/barbell-lunge.html"
+    },
+    {
+      "name": "Hack Squat",
+      "difficulty": "intermediate",
+      "tags": ["legs", "lower body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/hack-squat.html"
+    },
+    {
+      "name": "Barbell Hack Squat",
+      "difficulty": "intermediate",
+      "tags": ["legs", "lower body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/barbell-hack-squat.html"
+    },
+    {
+      "name": "Glute Ham Raise",
+      "difficulty": "intermediate",
+      "tags": ["legs", "lower body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/glute-ham-raise"
+    },
+    {
+      "name": "Bodyweight Standing Calf Raise",
+      "difficulty": "beginner",
+      "tags": ["calves", "lower body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/bodyweight-standing-calf-raise.html"
+    },
+    {
+      "name": "45 Degrees Calf Press",
+      "difficulty": "intermediate",
+      "tags": ["calves", "lower body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/45-degrees-calf-press.html"
+    },
+    {
+      "name": "French Press",
+      "difficulty": "intermediate",
+      "tags": ["triceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/french-press.html"
+    },
+    {
+      "name": "Seated Dumbbell Lateral Raise",
+      "difficulty": "intermediate",
+      "tags": ["shoulders", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/seated-dumbbell-lateral-raise.html"
+    },
+    {
+      "name": "Rope Tricep Extension",
+      "difficulty": "intermediate",
+      "tags": ["triceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/rope-tricep-extension.html"
+    },
+    {
+      "name": "Trap Bar Rack Pull",
+      "difficulty": "intermediate",
+      "tags": ["back", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/trap-bar-rack-pull"
+    },
+    {
+      "name": "Weighted Tricep Dips",
+      "difficulty": "intermediate",
+      "tags": ["triceps", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/weighted-tricep-dips.html"
+    },
+    {
+      "name": "Cable Crossovers (Mid Chest)",
+      "difficulty": "intermediate",
+      "tags": ["chest", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/cable-crossovers-%28mid-chest%29.html"
+    },
+    {
+      "name": "Chin Up",
+      "difficulty": "intermediate",
+      "tags": ["back", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/chin-up.html"
+    },
+    {
+      "name": "Incline Bench Two Arm Dumbbell Row",
+      "difficulty": "intermediate",
+      "tags": ["back", "upper body", "compound"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/incline-bench-two-arm-dumbbell-row.html"
+    },
+    {
+      "name": "Standing Cable Flys",
+      "difficulty": "intermediate",
+      "tags": ["chest", "upper body", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/standing-cable-flys.html"
+    },
+    {
+      "name": "Hyperextension",
+      "difficulty": "intermediate",
+      "tags": ["lower back", "core", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/hyperextension.html"
+    },
+    {
+      "name": "Hanging Leg Raise",
+      "difficulty": "intermediate",
+      "tags": ["abs", "core", "isolation"],
+      "sets": 3,
+      "reps": 10,
+      "rest": 60,
+      "exampleLink": "https://www.muscleandstrength.com/exercises/hanging-leg-raise.html"
+    }
+  ]
+}
