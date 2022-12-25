@@ -10,13 +10,13 @@ datasource db {
   relationMode = "prisma"
 }
 
-generator trpc {
-  provider       = "prisma-trpc-generator"
-  withMiddleware = false
-  withShield     = true
-  contextPath    = "@/server/trpc/context"
-  output         = "@/server/trpc"
-}
+// generator trpc {
+//   provider       = "prisma-trpc-generator"
+//   withMiddleware = false
+//   withShield     = true
+//   contextPath    = "@/server/trpc/context"
+//   output         = "@/server/trpc"
+// }
 
 // Necessary for Next auth
 model Account {
