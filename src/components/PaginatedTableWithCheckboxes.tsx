@@ -18,6 +18,8 @@ const exercises: Exercise[] = [
     rest: "90",
     exampleLink:
       "https://www.muscleandstrength.com/exercises/military-press.html",
+    createdAt: null,
+    updatedAt: null,
   },
 ];
 

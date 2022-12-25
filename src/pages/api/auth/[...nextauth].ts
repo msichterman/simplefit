@@ -11,9 +11,19 @@ import { prisma } from "@/server/db/client";
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
   callbacks: {
-    session({ session, user }) {
+    async session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
+
+        const userObj = await prisma.user.findUnique({
+          where: {
+            id: user.id,
+          },
+        });
+        if (userObj) {
+          session.user.username = userObj.username;
+          session.user.role = userObj.role;
+        }
       }
       return session;
     },

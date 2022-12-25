@@ -181,7 +181,7 @@ const Header = ({ isWide = false }) => {
           </Popover.Group>
           {!isLoading && (
             <div className="flex items-center md:ml-12">
-              <Link href={isAuthenticated ? "app/dashboard" : "app/sign-in"}>
+              <Link href={isAuthenticated ? "/app/dashboard" : "/app/sign-in"}>
                 <span className="ml-8 inline-flex items-center justify-center rounded-md border border-transparent bg-amber-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-700">
                   {isAuthenticated ? "Dashboard" : "Sign in"}
                 </span>
@@ -242,7 +242,9 @@ const Header = ({ isWide = false }) => {
             </div>
             {!isLoading && (
               <div className="space-y-6 py-6 px-5">
-                <Link href={isAuthenticated ? "app/dashboard" : "app/sign-in"}>
+                <Link
+                  href={isAuthenticated ? "/app/dashboard" : "/app/sign-in"}
+                >
                   <span className="flex w-full items-center justify-center rounded-md border border-transparent bg-amber-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-700">
                     {isAuthenticated ? "Dashboard" : "Sign in"}
                   </span>

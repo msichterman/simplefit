@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 export default function Profile() {
   const { data: session } = useSession();
   const user = session?.user;
+  console.log(user);
 
   if (!user) {
     return null;
@@ -91,7 +92,9 @@ export default function Profile() {
                         >
                           <img
                             className="h-full w-full rounded-full"
-                            src={user.image}
+                            src={
+                              user?.image || fallbackAvatar(session.user?.name)
+                            }
                             alt=""
                           />
                         </div>
@@ -118,7 +121,7 @@ export default function Profile() {
                     <div className="relative hidden overflow-hidden rounded-full lg:block">
                       <img
                         className="relative h-40 w-40 rounded-full"
-                        src={user.image}
+                        src={user?.image || fallbackAvatar(session.user?.name)}
                         alt=""
                       />
                       <label
