@@ -22,7 +22,7 @@ const exercises: Exercise[] = [
 ];
 
 export default function PaginatedTableWithCheckboxes() {
-  const checkbox = useRef(null);
+  const checkbox = useRef<HTMLInputElement | null>(null);
   const [checked, setChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
   const [selectedExercises, setSelectedExercises] = useState<Exercise[]>([]);
