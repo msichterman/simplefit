@@ -23,7 +23,7 @@ export const serverSchema = z.object({
   GOOGLE_CLIENT_SECRET: z.string(),
   TWITTER_CLIENT_ID: z.string(),
   TWITTER_CLIENT_SECRET: z.string(),
-  STRIPE_SECRET_KEY: z.string(),
+  // STRIPE_SECRET_KEY: z.string(),
 });
 
 /**
@@ -32,7 +32,7 @@ export const serverSchema = z.object({
  * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 export const clientSchema = z.object({
-  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
+  // NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
 });
 
 /**
@@ -42,6 +42,6 @@ export const clientSchema = z.object({
  * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
  */
 export const clientEnv = {
-  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
-    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+  // NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
+  //  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
 };
