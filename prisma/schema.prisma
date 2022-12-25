@@ -10,15 +10,12 @@ datasource db {
   relationMode = "prisma"
 }
 
-// generator trpc {
-//   provider           = "prisma-trpc-generator"
-//   output             = "../src/pages/api"
-//   withMiddleware     = false
-//   withShield         = false
-//   contextPath        = "../context"
-//   isGenerateSelect   = true
-//   isGenerateInclude  = true
-// }
+generator trpc {
+  provider       = "prisma-trpc-generator"
+  withMiddleware = false
+  withShield     = false
+  contextPath    = "@/server/trpc/context"
+}
 
 // Necessary for Next auth
 model Account {
@@ -59,9 +56,12 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  //Custom Fields
+  // Custom Fields
   authoredWorkouts Workout[] @relation("WorkoutAuthor")
   savedWorkouts    Workout[] @relation("WorkoutSaves")
+  username         String    @unique
+
+  @@index([username])
 }
 
 model VerificationToken {

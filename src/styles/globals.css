@@ -25,14 +25,14 @@
   h5,
   button,
   a {
-    font-family: Josefin Sans, system-ui, sans-serif;
+    font-family: Syne, system-ui, sans-serif;
     font-style: normal;
     font-variant: normal;
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
   }
   html {
-    font-family: Lato, system-ui, sans-serif;
+    font-family: Inter, system-ui, sans-serif;
     font-style: normal;
     font-variant: normal;
     -webkit-font-smoothing: auto;

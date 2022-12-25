@@ -106,8 +106,8 @@ const Home: NextPage = () => {
                   />
                 </svg>
               </div>
-              <div className="relative -mr-40 hidden pl-4 sm:mx-auto sm:max-w-3xl sm:px-0 lg:block lg:h-[560px] lg:max-w-none">
-                <JumpRopeIllustration className="w-full rounded-md px-10 lg:w-auto lg:max-w-none" />
+              <div className="relative hidden pl-4 sm:mx-auto sm:max-w-3xl sm:px-0 lg:block lg:h-[560px] lg:max-w-none">
+                <JumpRopeIllustration className="h-full rounded-md px-10 lg:w-auto lg:max-w-none" />
               </div>
             </div>
           </div>
@@ -312,8 +312,7 @@ const Home: NextPage = () => {
               <div className="relative">
                 <div className="sm:text-center">
                   <h2 className="text-2xl font-extrabold tracking-tight text-zinc-50 sm:text-3xl">
-                    Sign up for our newsletter today and start your journey to a
-                    healthier, fitter you!
+                    Sign up for our newsletter today!
                   </h2>
                   <p className="mx-auto mt-6 max-w-2xl text-lg text-amber-100">
                     Discover new workouts and exercises, learn from our expert

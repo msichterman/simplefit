@@ -12,6 +12,7 @@ import { Fragment, type SVGProps } from "react";
 import NavLink from "./utils/NavLink";
 import SimpleFit from "@/components/vectors/SimpleFit";
 import clsx from "clsx";
+import { useSession } from "next-auth/react";
 
 function SunIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -83,6 +84,9 @@ function ModeToggle() {
 }
 
 const Header = ({ isWide = false }) => {
+  const { status } = useSession();
+  const isLoading = status === "loading";
+  const isAuthenticated = status === "authenticated";
   const links = [
     {
       title: "Home",
@@ -175,13 +179,15 @@ const Header = ({ isWide = false }) => {
               <ModeToggle />
             </div>
           </Popover.Group>
-          {/* <div className="flex items-center md:ml-12">
-            <Link href={currentUser ? "app/dashboard" : "app/sign-in"}>
-              <span className="ml-8 inline-flex items-center justify-center rounded-md border border-transparent bg-amber-600 px-4 py-2 text-base font-medium text-zinc-50 shadow-sm hover:bg-amber-700">
-                {currentUser ? "Dashboard" : "Sign in"}
-              </span>
-            </Link>
-          </div> */}
+          {!isLoading && (
+            <div className="flex items-center md:ml-12">
+              <Link href={isAuthenticated ? "app/dashboard" : "app/sign-in"}>
+                <span className="ml-8 inline-flex items-center justify-center rounded-md border border-transparent bg-amber-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-700">
+                  {isAuthenticated ? "Dashboard" : "Sign in"}
+                </span>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 
@@ -234,23 +240,15 @@ const Header = ({ isWide = false }) => {
                 </nav>
               </div>
             </div>
-            {/* <div className="space-y-6 py-6 px-5">
-              <div>
-                <Link href="/sign-up">
-                  <span className="flex w-full items-center justify-center rounded-md border border-transparent bg-amber-600 px-4 py-2 text-base font-medium text-zinc-50 shadow-sm hover:bg-amber-700">
-                    Sign up
+            {!isLoading && (
+              <div className="space-y-6 py-6 px-5">
+                <Link href={isAuthenticated ? "app/dashboard" : "app/sign-in"}>
+                  <span className="flex w-full items-center justify-center rounded-md border border-transparent bg-amber-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-700">
+                    {isAuthenticated ? "Dashboard" : "Sign in"}
                   </span>
                 </Link>
-                <p className="mt-6 text-center text-base font-medium text-zinc-500">
-                  Existing customer?{" "}
-                  <Link href="/sign-in">
-                    <span className="text-amber-600 hover:text-amber-600">
-                      Sign in
-                    </span>
-                  </Link>
-                </p>
               </div>
-            </div> */}
+            )}
           </div>
         </Popover.Panel>
       </Transition>

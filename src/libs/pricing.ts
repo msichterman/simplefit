@@ -63,7 +63,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Unlimited Access to all Workouts",
       "Limited Access to Curated Workout Collections",
       "Advanced Tracking and Progress Monitoring",
-      "Priority support",
+      "Priority Support",
     ],
     prices: [
       {
@@ -97,7 +97,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Unlimited Access to Curated Workout Collections",
       "3rd Party Integrations",
       "Advanced Tracking and Progress Monitoring",
-      "Priority support",
+      "Priority Support",
     ],
     prices: [
       {
