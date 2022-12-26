@@ -43,7 +43,6 @@ async function seedExercise(exercise: RawExercise) {
       },
     },
   });
-  console.log(exerciseEntry);
 }
 
 const exercises: RawExercise[] = exerciseData.exercises;

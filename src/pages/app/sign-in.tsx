@@ -47,7 +47,7 @@ export default function SignIn() {
             {session ? (
               <h2>hi {session.user?.name}</h2>
             ) : (
-              <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
+              <h2 className="dark:text-zinc-50dark:text-zinc-50 mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-zinc-50 dark:text-gray-50">
                 Sign in to your account
               </h2>
             )}

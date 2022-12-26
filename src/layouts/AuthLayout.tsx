@@ -23,7 +23,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       return null;
     default:
       return (
-        <div className="flex h-full max-h-full min-h-screen min-h-screen  w-full min-w-full flex-col justify-between bg-zinc-50 dark:bg-neutral-900 dark:text-zinc-50">
+        <div className="flex h-full max-h-full min-h-screen  w-full min-w-full flex-col justify-between bg-zinc-50 dark:bg-neutral-900 dark:text-zinc-50">
           <div className="mx-auto flex h-full max-h-full w-full justify-center md:px-12 lg:px-0">
             <div className="z-10 flex flex-col py-10 px-4 sm:justify-center md:flex-none md:px-28 lg:shadow-2xl">
               <div className="mx-auto w-full sm:px-4 md:px-0">{children}</div>

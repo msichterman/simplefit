@@ -11,6 +11,7 @@ import { ExerciseUpdateManySchema } from "../generated/schemas/updateManyExercis
 import { ExerciseUpsertSchema } from "../generated/schemas/upsertOneExercise.schema";
 import { ExerciseAggregateSchema } from "../generated/schemas/aggregateExercise.schema";
 import { ExerciseGroupBySchema } from "../generated/schemas/groupByExercise.schema";
+import { ExerciseCountSchema } from "../generated/schemas/countExercise.schema";
 
 export const exercisesRouter = router({
   aggregateExercise: protectedProcedure
@@ -99,8 +100,10 @@ export const exercisesRouter = router({
       const upsertOneExercise = await ctx.prisma.exercise.upsert(input);
       return upsertOneExercise;
     }),
-  countExercise: protectedProcedure.query(async ({ ctx }) => {
-    const countExercise = await ctx.prisma.exercise.count();
-    return countExercise;
-  }),
+  countExercise: protectedProcedure
+    .input(ExerciseCountSchema)
+    .query(async ({ ctx, input }) => {
+      const countExercise = await ctx.prisma.exercise.count(input);
+      return countExercise;
+    }),
 });

@@ -44,7 +44,9 @@ export default function Payments() {
     <AppLayout>
       <div className="py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-          <h1 className="text-2xl font-semibold text-gray-900">Payments</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-zinc-50">
+            Payments
+          </h1>
         </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
           <div className="py-4">
@@ -58,7 +60,7 @@ export default function Payments() {
                       <div>
                         <h2
                           id="plan-heading"
-                          className="text-lg font-medium leading-6 text-gray-900"
+                          className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-50"
                         >
                           Plan
                         </h2>
@@ -111,7 +113,7 @@ export default function Payments() {
                                     </span>
                                     <RadioGroup.Label
                                       as="span"
-                                      className="ml-3 font-medium text-gray-900"
+                                      className="ml-3 font-medium text-gray-900 dark:text-zinc-50"
                                     >
                                       {plan.name}
                                     </RadioGroup.Label>
@@ -124,7 +126,7 @@ export default function Payments() {
                                       className={clsx(
                                         checked
                                           ? "text-amber-900"
-                                          : "text-gray-900",
+                                          : "text-gray-900 dark:text-zinc-50",
                                         "font-medium"
                                       )}
                                     >
@@ -180,7 +182,7 @@ export default function Payments() {
                           />
                         </Switch>
                         <Switch.Label as="span" className="ml-3">
-                          <span className="text-sm font-medium text-gray-900">
+                          <span className="text-sm font-medium text-gray-900 dark:text-zinc-50">
                             Annual billing
                           </span>
                           <span className="text-sm text-gray-500">
@@ -207,7 +209,7 @@ export default function Payments() {
                   <div className="px-4 sm:px-6">
                     <h2
                       id="billing-history-heading"
-                      className="text-lg font-medium leading-6 text-gray-900"
+                      className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-50"
                     >
                       Billing history
                     </h2>
@@ -221,19 +223,19 @@ export default function Payments() {
                               <tr>
                                 <th
                                   scope="col"
-                                  className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                                  className="px-6 py-3 text-left text-sm font-semibold text-gray-900 dark:text-zinc-50"
                                 >
                                   Date
                                 </th>
                                 <th
                                   scope="col"
-                                  className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                                  className="px-6 py-3 text-left text-sm font-semibold text-gray-900 dark:text-zinc-50"
                                 >
                                   Description
                                 </th>
                                 <th
                                   scope="col"
-                                  className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                                  className="px-6 py-3 text-left text-sm font-semibold text-gray-900 dark:text-zinc-50"
                                 >
                                   Amount
                                 </th>
@@ -251,7 +253,7 @@ export default function Payments() {
                             <tbody className="divide-y divide-gray-200 bg-white">
                               {payments.map((payment) => (
                                 <tr key={payment.id}>
-                                  <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+                                  <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-zinc-50">
                                     <time dateTime={payment.datetime}>
                                       {payment.date}
                                     </time>

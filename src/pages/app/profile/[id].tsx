@@ -5,7 +5,6 @@ import { useSession } from "next-auth/react";
 export default function Profile() {
   const { data: session } = useSession();
   const user = session?.user;
-  console.log(user);
 
   if (!user) {
     return null;
@@ -15,8 +14,10 @@ export default function Profile() {
     <AppLayout>
       <div className="py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-          <h1 className="text-2xl font-semibold text-gray-900">Profile</h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <h1 className="text-2xl font-semibold text-neutral-900 dark:text-zinc-50">
+            Profile
+          </h1>
+          <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-200">
             This information will be displayed publicly so be careful what you
             share.
           </p>
@@ -24,7 +25,7 @@ export default function Profile() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
           <div className="py-4">
             <form
-              className="divide-y divide-gray-200 lg:col-span-9"
+              className="divide-y divide-neutral-200 dark:divide-neutral-900 lg:col-span-9"
               action="#"
               method="POST"
             >
@@ -35,12 +36,12 @@ export default function Profile() {
                     <div>
                       <label
                         htmlFor="username"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-neutral-700 dark:text-neutral-100"
                       >
                         Username
                       </label>
                       <div className="mt-1 flex rounded-md shadow-sm">
-                        <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm">
+                        <span className="inline-flex items-center rounded-l-md border border-r-0 border-neutral-300 bg-neutral-50 px-3 text-neutral-500 dark:border-neutral-900 dark:bg-neutral-900 dark:text-neutral-200 sm:text-sm">
                           simplefit.ai/
                         </span>
                         <input
@@ -48,7 +49,7 @@ export default function Profile() {
                           name="username"
                           id="username"
                           autoComplete="username"
-                          className="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-gray-300 focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+                          className="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-neutral-300 bg-neutral-50 text-neutral-700 focus:border-amber-500 focus:ring-amber-500 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200 sm:text-sm"
                           defaultValue={user?.username}
                         />
                       </div>
@@ -57,7 +58,7 @@ export default function Profile() {
                     <div>
                       <label
                         htmlFor="about"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-neutral-700 dark:text-neutral-100"
                       >
                         About
                       </label>
@@ -66,11 +67,11 @@ export default function Profile() {
                           id="about"
                           name="about"
                           rows={3}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+                          className="mt-1 block w-full rounded-md border-neutral-300 bg-neutral-50 text-neutral-700 shadow-sm focus:border-amber-500 focus:ring-amber-500 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200 sm:text-sm"
                           defaultValue={""}
                         />
                       </div>
-                      <p className="mt-2 text-sm text-gray-500">
+                      <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-200">
                         Brief description for your profile. URLs are
                         hyperlinked.
                       </p>
@@ -79,7 +80,7 @@ export default function Profile() {
 
                   <div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
                     <p
-                      className="text-sm font-medium text-gray-700"
+                      className="text-sm font-medium text-neutral-700 dark:text-neutral-100"
                       aria-hidden="true"
                     >
                       Photo
@@ -99,10 +100,10 @@ export default function Profile() {
                           />
                         </div>
                         <div className="ml-5 rounded-md shadow-sm">
-                          <div className="group relative flex items-center justify-center rounded-md border border-gray-300 py-2 px-3 focus-within:ring-2 focus-within:ring-amber-500 focus-within:ring-offset-2 hover:bg-gray-50">
+                          <div className="group relative flex items-center justify-center rounded-md border border-neutral-300 py-2 px-3 focus-within:ring-2 focus-within:ring-amber-500 focus-within:ring-offset-2 hover:bg-neutral-50 dark:border-neutral-900 dark:bg-neutral-900">
                             <label
                               htmlFor="mobile-user-photo"
-                              className="pointer-events-none relative text-sm font-medium leading-4 text-gray-700"
+                              className="pointer-events-none relative text-sm font-medium leading-4 text-neutral-700 dark:text-neutral-100"
                             >
                               <span>Change</span>
                               <span className="sr-only"> user photo</span>
@@ -111,7 +112,7 @@ export default function Profile() {
                               id="mobile-user-photo"
                               name="user-photo"
                               type="file"
-                              className="absolute h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
+                              className="absolute h-full w-full cursor-pointer rounded-md border-neutral-300 opacity-0 dark:border-neutral-900"
                             />
                           </div>
                         </div>
@@ -134,7 +135,7 @@ export default function Profile() {
                           type="file"
                           id="desktop-user-photo"
                           name="user-photo"
-                          className="absolute inset-0 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
+                          className="absolute inset-0 h-full w-full cursor-pointer rounded-md border-neutral-300 opacity-0 dark:border-neutral-900"
                         />
                       </label>
                     </div>
@@ -145,7 +146,7 @@ export default function Profile() {
                   <div className="col-span-12">
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-neutral-700 dark:text-neutral-100"
                     >
                       Name
                     </label>
@@ -154,7 +155,7 @@ export default function Profile() {
                       name="name"
                       id="name"
                       autoComplete="name"
-                      className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-amber-500 sm:text-sm"
+                      className="mt-1 block w-full rounded-md border border-neutral-300 bg-neutral-50 py-2 px-3 text-neutral-700 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-amber-500 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200 sm:text-sm"
                       disabled={true}
                       value={user?.name || undefined}
                     />
@@ -163,7 +164,7 @@ export default function Profile() {
                   <div className="col-span-12">
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-neutral-700 dark:text-neutral-100"
                     >
                       Email
                     </label>
@@ -172,7 +173,7 @@ export default function Profile() {
                       name="email"
                       id="email"
                       autoComplete="email"
-                      className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-amber-500 sm:text-sm"
+                      className="mt-1 block w-full rounded-md border border-neutral-300 bg-neutral-50 py-2 px-3 text-neutral-700 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-amber-500 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200 sm:text-sm"
                       disabled={true}
                       value={user?.email || undefined}
                     />
@@ -180,11 +181,11 @@ export default function Profile() {
                 </div>
               </div>
 
-              <div className="divide-y divide-gray-200 pt-6">
+              <div className="divide-y divide-neutral-200 pt-6 dark:divide-neutral-900">
                 <div className="mt-4 flex justify-end py-4 px-4 sm:px-6">
                   <button
                     type="button"
-                    className="inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+                    className="inline-flex justify-center rounded-md border border-neutral-300 bg-white py-2 px-4 text-sm font-medium text-neutral-700 shadow-sm hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 dark:border-neutral-900 dark:bg-neutral-900 dark:text-neutral-100"
                   >
                     Cancel
                   </button>
