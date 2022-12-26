@@ -1,7 +1,9 @@
-import React, { AnchorHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import clsx from "clsx";
-import Link, { LinkProps } from "next/link";
+import type { LinkProps } from "next/link";
+import Link from "next/link";
 
 type NavLinkProps = React.PropsWithChildren<
   AnchorHTMLAttributes<HTMLAnchorElement>

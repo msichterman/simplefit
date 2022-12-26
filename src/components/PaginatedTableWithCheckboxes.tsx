@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -7,41 +7,46 @@ import {
 } from "@heroicons/react/20/solid";
 import { type Exercise } from "@prisma/client";
 import ExternalLink from "./ExternalLink";
-
-const exercises: Exercise[] = [
-  {
-    id: 1,
-    name: "Military Press",
-    difficulty: "advanced",
-    sets: 4,
-    reps: "6",
-    rest: "90",
-    exampleLink:
-      "https://www.muscleandstrength.com/exercises/military-press.html",
-    createdAt: null,
-    updatedAt: null,
-  },
-];
+import { trpc } from "@/libs/utils/trpc";
 
 export default function PaginatedTableWithCheckboxes() {
   const checkbox = useRef<HTMLInputElement | null>(null);
   const [checked, setChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
   const [selectedExercises, setSelectedExercises] = useState<Exercise[]>([]);
+  const [take, setTake] = useState(10);
+  const [skip, setSkip] = useState(0);
+  const [pageCount, setPageCount] = useState<number | null>(null);
+
+  const { data: count } = trpc.exercise.countExercise.useQuery();
+  const { data: exercises, isLoading } =
+    trpc.exercise.findManyExercise.useQuery({
+      take,
+      skip,
+    });
+
+  useEffect(() => {
+    if (count) {
+      const pages = Math.ceil(count / take);
+      setPageCount(pages);
+    }
+  }, [count, take]);
 
   useLayoutEffect(() => {
     if (checkbox?.current) {
       const isIndeterminate =
         selectedExercises.length > 0 &&
-        selectedExercises.length < exercises.length;
-      setChecked(selectedExercises.length === exercises.length);
+        selectedExercises.length < (exercises?.length ?? 0);
+      setChecked(selectedExercises.length === (exercises?.length ?? 0));
       setIndeterminate(isIndeterminate);
       checkbox.current.indeterminate = isIndeterminate;
     }
-  }, [selectedExercises]);
+  }, [exercises?.length, selectedExercises]);
 
   function toggleAll() {
-    setSelectedExercises(checked || indeterminate ? [] : exercises);
+    setSelectedExercises(
+      checked || indeterminate || !exercises ? [] : exercises
+    );
     setChecked(!checked && !indeterminate);
     setIndeterminate(false);
   }
@@ -143,8 +148,8 @@ export default function PaginatedTableWithCheckboxes() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200 bg-white">
-                  {exercises.map((exercise: Exercise) => (
+                <tbody className="w-full divide-y divide-gray-200 bg-white">
+                  {exercises?.map((exercise: Exercise) => (
                     <tr
                       key={exercise.id}
                       className={
@@ -216,93 +221,105 @@ export default function PaginatedTableWithCheckboxes() {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
-        <div className="flex flex-1 justify-between sm:hidden">
-          <a
-            href="#"
-            className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
-            Previous
-          </a>
-          <a
-            href="#"
-            className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
-            Next
-          </a>
-        </div>
-        <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm text-gray-700">
-              Showing <span className="font-medium">1</span> to{" "}
-              <span className="font-medium">10</span> of{" "}
-              <span className="font-medium">97</span> results
-            </p>
-          </div>
-          <div>
-            <nav
-              className="isolate inline-flex -space-x-px rounded-md shadow-sm"
-              aria-label="Pagination"
+      {count && pageCount && (
+        <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+          <div className="flex flex-1 justify-between sm:hidden">
+            <button
+              onClick={() => setSkip((s) => (s >= take ? s - take : s))}
+              className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
             >
-              <a
-                href="#"
-                className="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+              Previous
+            </button>
+            <button
+              onClick={() => setSkip((s) => s + take)}
+              className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              Next
+            </button>
+          </div>
+          <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm text-gray-700">
+                Showing <span className="font-medium">{skip + 1}</span> to{" "}
+                <span className="font-medium">
+                  {Math.min(skip + take, count)}
+                </span>{" "}
+                of <span className="font-medium">{count}</span> results
+              </p>
+            </div>
+            <div>
+              <nav
+                className="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                aria-label="Pagination"
               >
-                <span className="sr-only">Previous</span>
-                <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-              </a>
-              {/* Current: "z-10 bg-amber-50 border-amber-500 text-amber-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
-              <a
-                href="#"
-                aria-current="page"
-                className="relative z-10 inline-flex items-center border border-amber-500 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-600 focus:z-20"
-              >
-                1
-              </a>
-              <a
-                href="#"
-                className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
-              >
-                2
-              </a>
-              <a
-                href="#"
-                className="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex"
-              >
-                3
-              </a>
-              <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">
-                ...
-              </span>
-              <a
-                href="#"
-                className="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex"
-              >
-                8
-              </a>
-              <a
-                href="#"
-                className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
-              >
-                9
-              </a>
-              <a
-                href="#"
-                className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
-              >
-                10
-              </a>
-              <a
-                href="#"
-                className="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
-              >
-                <span className="sr-only">Next</span>
-                <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-              </a>
-            </nav>
+                <button
+                  onClick={() => setSkip((s) => (s >= take ? s - take : s))}
+                  className="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  <span className="sr-only">Previous</span>
+                  <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+                </button>
+                {/* Current: "z-10 bg-amber-50 border-amber-500 text-amber-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
+
+                {[...Array(pageCount).keys()].map((num) => {
+                  const pageNum = num + 1;
+                  const isOdd = pageCount % 2 === 1;
+                  if (
+                    (!isOdd && pageCount / num === 2) ||
+                    (isOdd && (pageCount - 1) / num === 2)
+                  ) {
+                    return (
+                      <span
+                        key={num + 1}
+                        className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700"
+                      >
+                        ...
+                      </span>
+                    );
+                  }
+                  if (
+                    (!isOdd &&
+                      (pageNum <= Math.ceil(pageCount / 4) ||
+                        pageNum >= pageCount / 2 + Math.ceil(pageCount / 4))) ||
+                    (isOdd &&
+                      (pageNum <= Math.ceil((pageCount - 1) / 4) ||
+                        pageNum >=
+                          (pageCount - 1) / 2 + Math.ceil((pageCount - 1) / 4)))
+                  ) {
+                    const isCurrent = Boolean((skip + take) / take - 1 === num);
+                    return (
+                      <button
+                        onClick={() => setSkip(num * take)}
+                        key={num}
+                        aria-current="page"
+                        className={clsx(
+                          isCurrent
+                            ? "z-10 border-amber-500 bg-amber-50 text-amber-600"
+                            : "border-gray-300 bg-white text-gray-500 hover:bg-gray-50",
+                          "relative z-10 inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20"
+                        )}
+                      >
+                        {pageNum}
+                      </button>
+                    );
+                  }
+
+                  return null;
+                })}
+                <button
+                  onClick={() =>
+                    setSkip((s) => (s + take <= count ? s + take : s))
+                  }
+                  className="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  <span className="sr-only">Next</span>
+                  <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+                </button>
+              </nav>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

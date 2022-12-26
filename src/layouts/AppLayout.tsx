@@ -48,13 +48,13 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           pathname: "/app/sign-in",
           query: { redirect: router.pathname },
         },
-        "app/sign-in"
+        "/app/sign-in"
       );
       return null;
     default:
       return (
-        <div className="relative h-screen min-h-screen">
-          <div className="h-screen">
+        <div className="relative h-full min-h-screen">
+          <div className="h-full min-h-screen">
             <Transition.Root show={sidebarOpen} as={Fragment}>
               <Dialog
                 as="div"

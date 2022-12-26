@@ -13,9 +13,9 @@ datasource db {
 // generator trpc {
 //   provider       = "prisma-trpc-generator"
 //   withMiddleware = false
-//   withShield     = true
-//   contextPath    = "@/server/trpc/context"
-//   output         = "@/server/trpc"
+//   withShield     = false
+//   contextPath    = "../src/server/trpc/context"
+//   output         = "../src/server/trpc/generated"
 // }
 
 // Necessary for Next auth

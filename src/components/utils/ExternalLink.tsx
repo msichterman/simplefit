@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { AnchorHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes } from "react";
 
 const ExternalLink = ({
   href,
