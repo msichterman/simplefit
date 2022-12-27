@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -64,7 +64,7 @@ export default function PaginatedTableWithCheckboxes() {
   }
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <p className="mt-2 text-sm text-neutral-700 dark:text-zinc-200">
@@ -104,7 +104,7 @@ export default function PaginatedTableWithCheckboxes() {
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <svg
               aria-hidden="true"
-              className="h-5 w-5 text-neutral-500 dark:text-neutral-300 dark:text-neutral-400"
+              className="h-5 w-5 text-neutral-500 dark:text-neutral-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -146,11 +146,11 @@ export default function PaginatedTableWithCheckboxes() {
         </div>
       </form>
       <div className="flex flex-col">
-        <div className="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div className="relative shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+        <div className="-my-2 -mx-4 min-w-full overflow-x-clip sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-h-full min-w-full py-2 align-middle md:px-6 lg:px-8">
+            <div className="relative min-h-full overflow-clip shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
               {selectedExercises.length > 0 && (
-                <div className="absolute left-12 top-0.5 z-20 flex h-12 items-center space-x-3 rounded-md bg-amber-600 px-2 sm:left-16">
+                <div className="absolute left-12 top-2 z-20 flex h-12 items-center space-x-3 rounded-md bg-amber-600 px-2 sm:left-16">
                   <span className="px-2 align-middle text-xxs leading-tight text-amber-50">{`${selectedExercises.length} exercises selected`}</span>
                   <button
                     type="button"
@@ -160,8 +160,8 @@ export default function PaginatedTableWithCheckboxes() {
                   </button>
                 </div>
               )}
-              <table className="min-w-full table-fixed divide-y divide-neutral-300 dark:divide-neutral-900">
-                <thead className="sticky top-0 z-10 bg-zinc-200/60 backdrop-blur-sm dark:bg-neutral-900/60">
+              <table className="min-h-96 min-w-full table-fixed divide-y divide-neutral-300 dark:divide-neutral-900">
+                <thead className="sticky top-12 z-10 h-16 bg-zinc-200/60 backdrop-blur-sm dark:bg-neutral-900/60 sm:top-0">
                   <tr>
                     <th
                       scope="col"
@@ -171,49 +171,49 @@ export default function PaginatedTableWithCheckboxes() {
                         type="checkbox"
                         className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-neutral-300 text-amber-600 focus:ring-amber-500 dark:border-neutral-900 sm:left-6"
                         ref={checkbox}
-                        checked={checked}
+                        checked={selectedExercises.length > 0}
                         onChange={toggleAll}
                       />
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-0 z-10 min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100"
+                      className="sticky top-12 z-10 min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
                     >
                       Name
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-0 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100"
+                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
                     >
                       Difficulty
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-0 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100"
+                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
                     >
                       Sets
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-0 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100"
+                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
                     >
                       Reps
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-0 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100"
+                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
                     >
                       Rest
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-0 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100"
+                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
                     >
                       Example
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-0 z-10 py-3.5 pl-3 pr-4 sm:pr-6"
+                      className="sticky top-12 z-10 py-3.5 pl-3 pr-4 sm:top-0 sm:pr-6"
                     >
                       <span className="sr-only">Edit</span>
                     </th>
