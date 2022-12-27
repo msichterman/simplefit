@@ -19,17 +19,17 @@ datasource db {
 //   output         = "../src/server/trpc/generated"
 // }
 
-generator zod {
-  provider          = "prisma-zod-generator"
-  output            = "../src/server/trpc/generated"
-  isGenerateInclude = true
-  isGenerateSelect  = true
-}
+// generator zod {
+//   provider          = "prisma-zod-generator"
+//   output            = "../src/server/trpc/generated"
+//   isGenerateInclude = true
+//   isGenerateSelect  = true
+// }
 
-generator erd {
-  provider = "prisma-erd-generator"
-  theme    = "neutral"
-}
+// generator erd {
+//   provider = "prisma-erd-generator"
+//   theme    = "neutral"
+// }
 
 // Necessary for Next auth
 model Account {
