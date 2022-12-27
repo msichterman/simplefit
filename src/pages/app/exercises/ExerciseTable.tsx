@@ -174,7 +174,7 @@ export default function ExerciseTable({
                     onClick={() => setSidebarOpen(true)}
                     className="inline-flex items-center rounded border border-neutral-300 bg-zinc-50 px-2.5 py-1.5 text-xs font-medium text-neutral-700 shadow-sm hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-900 dark:bg-neutral-700 dark:text-zinc-100"
                   >
-                    Add to workout...
+                    Create workout...
                   </button>
                 </div>
               )}
