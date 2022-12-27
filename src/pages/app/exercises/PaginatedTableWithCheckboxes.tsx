@@ -85,11 +85,13 @@ export default function PaginatedTableWithCheckboxes() {
         className="mt-8 mb-4"
         onSubmit={(e) => {
           e.preventDefault();
+          setSkip(0);
           setSearchString(searchInput);
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             e.preventDefault();
+            setSkip(0);
             setSearchString(searchInput);
           }
         }}
@@ -121,31 +123,33 @@ export default function PaginatedTableWithCheckboxes() {
           <input
             type="search"
             id="default-search"
-            className="dark:text-zinc-50focus:border-amber-500 block w-full rounded-lg border border-neutral-300 bg-zinc-50 p-4 pl-10 text-sm text-neutral-900 focus:ring-amber-500 dark:border-neutral-900 dark:border-neutral-600 dark:bg-neutral-700 dark:bg-neutral-700 dark:text-zinc-50 dark:text-zinc-50 dark:text-white dark:placeholder-neutral-400 dark:focus:border-amber-500 dark:focus:ring-amber-500"
+            className="dark:text-zinc-50focus:border-amber-500 block w-full rounded-lg border border-neutral-300 bg-zinc-50 p-4 pl-10 text-[16px] text-neutral-900 focus:ring-amber-500 dark:border-neutral-900 dark:bg-neutral-700 dark:text-zinc-50 dark:placeholder-neutral-400 dark:focus:border-amber-500 dark:focus:ring-amber-500"
             placeholder="Search exercises..."
             value={searchInput}
             onChange={(e) => {
               setSearchInput(e.target.value);
             }}
           />
-          <button
-            onClick={() => {
-              setSearchString("");
-              setSearchInput("");
-            }}
-            className={clsx(
-              "absolute bottom-0 right-24 rounded-lg py-4 text-sm font-medium text-neutral-900 outline-none dark:text-neutral-50",
-              Boolean(!searchInput) && "hidden"
-            )}
-          >
-            <XCircleIcon className="h-6 w-6" />
-          </button>
-          <button
-            type="submit"
-            className="absolute right-2.5 bottom-2.5 rounded-lg bg-amber-700 px-4 py-2 text-sm font-medium text-amber-50 hover:bg-amber-800 focus:outline-none focus:ring-4 focus:ring-amber-300 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-          >
-            Search
-          </button>
+          <div className="absolute right-2.5 bottom-2.5 flex items-center space-x-4">
+            <button
+              onClick={() => {
+                setSearchString("");
+                setSearchInput("");
+              }}
+              className={clsx(
+                "rounded-lg text-sm font-medium text-neutral-900 outline-none dark:text-neutral-50",
+                Boolean(!searchInput) && "hidden"
+              )}
+            >
+              <XCircleIcon className="h-6 w-6" />
+            </button>
+            <button
+              type="submit"
+              className="rounded-lg bg-amber-700 px-4 py-2 text-sm font-medium text-amber-50 hover:bg-amber-800 focus:outline-none focus:ring-4 focus:ring-amber-300 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </form>
       <div className="flex flex-col">
@@ -308,6 +312,23 @@ export default function PaginatedTableWithCheckboxes() {
             >
               Previous
             </button>
+            {count === 0 ? (
+              <span className="text-sm text-neutral-700 dark:text-zinc-50">
+                No exercises found
+              </span>
+            ) : (
+              <div>
+                <p className="text-center text-sm text-neutral-700 dark:text-zinc-50">
+                  Showing <span className="font-medium">{skip + 1}</span> to{" "}
+                  <span className="font-medium">
+                    {Math.min(skip + take, count)}
+                  </span>
+                </p>
+                <p className="text-center text-xxs text-neutral-700 dark:text-zinc-50">
+                  of <span className="font-medium">{count}</span> results
+                </p>
+              </div>
+            )}
             <button
               onClick={() => setSkip((s) => (s + take <= count ? s + take : s))}
               className="relative ml-3 inline-flex items-center rounded-md border border-neutral-300 bg-zinc-50 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-zinc-50 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-50"
