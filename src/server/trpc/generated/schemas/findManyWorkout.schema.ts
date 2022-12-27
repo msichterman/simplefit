@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { WorkoutSelectObjectSchema } from "./objects/WorkoutSelect.schema";
 import { WorkoutIncludeObjectSchema } from "./objects/WorkoutInclude.schema";
 import { WorkoutOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/WorkoutOrderByWithRelationAndSearchRelevanceInput.schema";
 import { WorkoutWhereInputObjectSchema } from "./objects/WorkoutWhereInput.schema";
@@ -6,6 +7,7 @@ import { WorkoutWhereUniqueInputObjectSchema } from "./objects/WorkoutWhereUniqu
 import { WorkoutScalarFieldEnumSchema } from "./enums/WorkoutScalarFieldEnum.schema";
 
 export const WorkoutFindManySchema = z.object({
+  select: z.lazy(() => WorkoutSelectObjectSchema.optional()),
   include: z.lazy(() => WorkoutIncludeObjectSchema.optional()),
   orderBy: z
     .union([

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { AccountSelectObjectSchema } from "./objects/AccountSelect.schema";
 import { AccountIncludeObjectSchema } from "./objects/AccountInclude.schema";
 import { AccountOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/AccountOrderByWithRelationAndSearchRelevanceInput.schema";
 import { AccountWhereInputObjectSchema } from "./objects/AccountWhereInput.schema";
@@ -6,6 +7,7 @@ import { AccountWhereUniqueInputObjectSchema } from "./objects/AccountWhereUniqu
 import { AccountScalarFieldEnumSchema } from "./enums/AccountScalarFieldEnum.schema";
 
 export const AccountFindManySchema = z.object({
+  select: z.lazy(() => AccountSelectObjectSchema.optional()),
   include: z.lazy(() => AccountIncludeObjectSchema.optional()),
   orderBy: z
     .union([

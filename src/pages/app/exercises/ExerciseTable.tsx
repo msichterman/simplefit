@@ -167,9 +167,9 @@ export default function ExerciseTable({
         <div className="-my-2 -mx-4 min-w-full overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-h-full min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="relative min-h-full overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-              {selectedExercises.length > 0 && (
+              {selectedExercises?.length > 0 && (
                 <div className="absolute left-12 top-2 z-20 flex h-12 items-center space-x-3 rounded-md bg-amber-600 px-2 sm:left-16">
-                  <span className="px-2 align-middle text-xxs leading-tight text-amber-50">{`${selectedExercises.length} exercises selected`}</span>
+                  <span className="px-2 align-middle text-xxs leading-tight text-amber-50">{`${selectedExercises?.length} exercises selected`}</span>
                   <button
                     onClick={() => setSidebarOpen(true)}
                     className="inline-flex items-center rounded border border-neutral-300 bg-zinc-50 px-2.5 py-1.5 text-xs font-medium text-neutral-700 shadow-sm hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-900 dark:bg-neutral-700 dark:text-zinc-100"
@@ -189,7 +189,7 @@ export default function ExerciseTable({
                         type="checkbox"
                         className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-neutral-300 text-amber-600 focus:ring-amber-500 dark:border-neutral-900 sm:left-6"
                         ref={checkbox}
-                        checked={selectedExercises.length > 0}
+                        checked={selectedExercises?.length > 0}
                         onChange={toggleAll}
                       />
                     </th>

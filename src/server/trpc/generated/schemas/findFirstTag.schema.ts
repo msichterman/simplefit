@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TagSelectObjectSchema } from "./objects/TagSelect.schema";
 import { TagIncludeObjectSchema } from "./objects/TagInclude.schema";
 import { TagOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/TagOrderByWithRelationAndSearchRelevanceInput.schema";
 import { TagWhereInputObjectSchema } from "./objects/TagWhereInput.schema";
@@ -6,6 +7,7 @@ import { TagWhereUniqueInputObjectSchema } from "./objects/TagWhereUniqueInput.s
 import { TagScalarFieldEnumSchema } from "./enums/TagScalarFieldEnum.schema";
 
 export const TagFindFirstSchema = z.object({
+  select: TagSelectObjectSchema.optional(),
   include: TagIncludeObjectSchema.optional(),
   orderBy: z
     .union([

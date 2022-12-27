@@ -11,7 +11,7 @@ import { ExerciseUpdateManySchema } from "../generated/schemas/updateManyExercis
 import { ExerciseUpsertSchema } from "../generated/schemas/upsertOneExercise.schema";
 import { ExerciseAggregateSchema } from "../generated/schemas/aggregateExercise.schema";
 import { ExerciseGroupBySchema } from "../generated/schemas/groupByExercise.schema";
-import { ExerciseCountSchema } from "../generated/schemas/countExercise.schema";
+import { ExerciseCountSchema } from "../libs/countExercise.schema";
 
 export const exercisesRouter = router({
   aggregateExercise: protectedProcedure

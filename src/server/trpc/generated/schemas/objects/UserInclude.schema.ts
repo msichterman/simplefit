@@ -3,6 +3,7 @@ import { AccountFindManySchema } from "../findManyAccount.schema";
 import { SessionFindManySchema } from "../findManySession.schema";
 import { CustomerPaymentArgsObjectSchema } from "./CustomerPaymentArgs.schema";
 import { WorkoutFindManySchema } from "../findManyWorkout.schema";
+import { UserCountOutputTypeArgsObjectSchema } from "./UserCountOutputTypeArgs.schema";
 
 import type { Prisma } from "@prisma/client";
 
@@ -23,7 +24,9 @@ const Schema: z.ZodType<Prisma.UserInclude> = z
     savedWorkouts: z
       .union([z.boolean(), z.lazy(() => WorkoutFindManySchema)])
       .optional(),
-    _count: z.boolean().optional(),
+    _count: z
+      .union([z.boolean(), z.lazy(() => UserCountOutputTypeArgsObjectSchema)])
+      .optional(),
   })
   .strict();
 

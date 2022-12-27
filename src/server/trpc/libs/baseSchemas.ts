@@ -8,6 +8,4 @@ export const exerciseSchema = z.object({
   reps: z.string(),
   rest: z.string(),
   exampleLink: z.string(),
-  createdAt: z.date().nullable(),
-  updatedAt: z.date().nullable(),
 });

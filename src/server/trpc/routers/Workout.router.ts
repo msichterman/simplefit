@@ -37,6 +37,8 @@ export const workoutsRouter = router({
               id: ctx.session.user.id,
             },
           },
+          exercises: input.data.exercises,
+          tags: input.data.tags,
         },
       });
       return createOneWorkout;

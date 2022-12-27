@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SessionSelectObjectSchema } from "./objects/SessionSelect.schema";
 import { SessionIncludeObjectSchema } from "./objects/SessionInclude.schema";
 import { SessionOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/SessionOrderByWithRelationAndSearchRelevanceInput.schema";
 import { SessionWhereInputObjectSchema } from "./objects/SessionWhereInput.schema";
@@ -6,6 +7,7 @@ import { SessionWhereUniqueInputObjectSchema } from "./objects/SessionWhereUniqu
 import { SessionScalarFieldEnumSchema } from "./enums/SessionScalarFieldEnum.schema";
 
 export const SessionFindFirstSchema = z.object({
+  select: SessionSelectObjectSchema.optional(),
   include: SessionIncludeObjectSchema.optional(),
   orderBy: z
     .union([
