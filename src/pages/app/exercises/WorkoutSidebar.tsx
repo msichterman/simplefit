@@ -68,7 +68,7 @@ export default function WorkoutSidebar({
   };
 
   return (
-    <Transition.Root show={open} as={Fragment}>
+    <Transition.Root show={open || false} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <div className="fixed inset-0" />
 
