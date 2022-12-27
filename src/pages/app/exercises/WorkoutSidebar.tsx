@@ -9,8 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { trpc } from "@/libs/utils/trpc";
-import { WorkoutCreateOneSchema } from "@/server/trpc/generated/schemas";
-import type { z } from "zod";
+import { z } from "zod";
+import { exerciseSchema } from "@/server/trpc/libs/baseSchemas";
 
 type WorkoutSidebarProps = {
   selectedExercises: Exercise[];
@@ -25,7 +25,11 @@ export default function WorkoutSidebar({
   open,
   setOpen,
 }: WorkoutSidebarProps) {
-  type FormSchemaType = z.infer<typeof WorkoutCreateOneSchema>;
+  const FormSchema = z.object({
+    name: z.string(),
+    description: z.string(),
+  });
+  type FormSchemaType = z.infer<typeof FormSchema>;
 
   const {
     register,
@@ -35,7 +39,7 @@ export default function WorkoutSidebar({
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<FormSchemaType>({
-    resolver: zodResolver(WorkoutCreateOneSchema),
+    resolver: zodResolver(FormSchema),
   });
 
   const workout = trpc.workout.createOneWorkout.useMutation({
@@ -44,7 +48,7 @@ export default function WorkoutSidebar({
     },
   });
 
-  const onSubmit: SubmitHandler<FormSchemaType> = async ({ data }) => {
+  const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
     const connectExercises = selectedExercises.map((e) => ({
       id: e.id,
     }));
@@ -111,33 +115,33 @@ export default function WorkoutSidebar({
                           <div className="space-y-6 pt-6 pb-5">
                             <div>
                               <label
-                                htmlFor="data.name"
+                                htmlFor="name"
                                 className="block text-sm font-medium text-neutral-900"
                               >
                                 Workout name
                               </label>
                               <div className="mt-1">
                                 <input
-                                  {...register("data.name")}
+                                  {...register("name")}
                                   type="text"
-                                  name="data.name"
-                                  id="data.name"
+                                  name="name"
+                                  id="name"
                                   className="block w-full rounded-md border-neutral-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
                                 />
                               </div>
                             </div>
                             <div>
                               <label
-                                htmlFor="data.description"
+                                htmlFor="description"
                                 className="block text-sm font-medium text-neutral-900"
                               >
                                 Description
                               </label>
                               <div className="mt-1">
                                 <textarea
-                                  {...register("data.description")}
-                                  id="data.description"
-                                  name="data.description"
+                                  {...register("description")}
+                                  id="description"
+                                  name="description"
                                   rows={4}
                                   className="block w-full rounded-md border-neutral-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
                                   defaultValue={""}
