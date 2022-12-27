@@ -1,14 +1,16 @@
 import { z } from "zod";
-import { CustomerPaymentOrderByWithRelationInputObjectSchema } from "./objects/CustomerPaymentOrderByWithRelationInput.schema";
+import { CustomerPaymentIncludeObjectSchema } from "./objects/CustomerPaymentInclude.schema";
+import { CustomerPaymentOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/CustomerPaymentOrderByWithRelationAndSearchRelevanceInput.schema";
 import { CustomerPaymentWhereInputObjectSchema } from "./objects/CustomerPaymentWhereInput.schema";
 import { CustomerPaymentWhereUniqueInputObjectSchema } from "./objects/CustomerPaymentWhereUniqueInput.schema";
 import { CustomerPaymentScalarFieldEnumSchema } from "./enums/CustomerPaymentScalarFieldEnum.schema";
 
 export const CustomerPaymentFindFirstSchema = z.object({
+  include: CustomerPaymentIncludeObjectSchema.optional(),
   orderBy: z
     .union([
-      CustomerPaymentOrderByWithRelationInputObjectSchema,
-      CustomerPaymentOrderByWithRelationInputObjectSchema.array(),
+      CustomerPaymentOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      CustomerPaymentOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: CustomerPaymentWhereInputObjectSchema.optional(),

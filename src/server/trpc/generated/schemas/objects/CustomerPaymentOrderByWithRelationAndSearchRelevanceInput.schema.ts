@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { SortOrderSchema } from "../enums/SortOrder.schema";
-import { UserOrderByWithRelationInputObjectSchema } from "./UserOrderByWithRelationInput.schema";
+import { UserOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./UserOrderByWithRelationAndSearchRelevanceInput.schema";
+import { CustomerPaymentOrderByRelevanceInputObjectSchema } from "./CustomerPaymentOrderByRelevanceInput.schema";
 
 import type { Prisma } from "@prisma/client";
 
@@ -16,9 +17,13 @@ const Schema: z.ZodType<Prisma.CustomerPaymentOrderByWithRelationAndSearchReleva
       deletedAt: z.lazy(() => SortOrderSchema).optional(),
       updatedAt: z.lazy(() => SortOrderSchema).optional(),
       customer: z
-        .lazy(() => UserOrderByWithRelationInputObjectSchema)
+        .lazy(() => UserOrderByWithRelationAndSearchRelevanceInputObjectSchema)
+        .optional(),
+      _relevance: z
+        .lazy(() => CustomerPaymentOrderByRelevanceInputObjectSchema)
         .optional(),
     })
     .strict();
 
-export const CustomerPaymentOrderByWithRelationInputObjectSchema = Schema;
+export const CustomerPaymentOrderByWithRelationAndSearchRelevanceInputObjectSchema =
+  Schema;

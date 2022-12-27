@@ -6,6 +6,7 @@ const Schema: z.ZodType<Prisma.WorkoutCreateManyAuthorInput> = z
   .object({
     id: z.number().optional(),
     name: z.string(),
+    description: z.string().optional().nullable(),
     createdAt: z.date().optional().nullable(),
     updatedAt: z.date().optional().nullable(),
   })

@@ -1,17 +1,22 @@
 import { z } from "zod";
 import { TagCreateNestedManyWithoutWorkoutsInputObjectSchema } from "./TagCreateNestedManyWithoutWorkoutsInput.schema";
 import { UserCreateNestedOneWithoutAuthoredWorkoutsInputObjectSchema } from "./UserCreateNestedOneWithoutAuthoredWorkoutsInput.schema";
+import { ExerciseCreateNestedManyWithoutWorkoutsInputObjectSchema } from "./ExerciseCreateNestedManyWithoutWorkoutsInput.schema";
 
 import type { Prisma } from "@prisma/client";
 
 const Schema: z.ZodType<Prisma.WorkoutCreateWithoutSavedByInput> = z
   .object({
     name: z.string(),
+    description: z.string().optional().nullable(),
     tags: z
       .lazy(() => TagCreateNestedManyWithoutWorkoutsInputObjectSchema)
       .optional(),
     author: z
       .lazy(() => UserCreateNestedOneWithoutAuthoredWorkoutsInputObjectSchema)
+      .optional(),
+    exercises: z
+      .lazy(() => ExerciseCreateNestedManyWithoutWorkoutsInputObjectSchema)
       .optional(),
     createdAt: z.date().optional().nullable(),
     updatedAt: z.date().optional().nullable(),

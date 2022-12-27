@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { StringFieldUpdateOperationsInputObjectSchema } from "./StringFieldUpdateOperationsInput.schema";
 import { IntFieldUpdateOperationsInputObjectSchema } from "./IntFieldUpdateOperationsInput.schema";
+import { WorkoutUpdateManyWithoutExercisesNestedInputObjectSchema } from "./WorkoutUpdateManyWithoutExercisesNestedInput.schema";
 import { NullableDateTimeFieldUpdateOperationsInputObjectSchema } from "./NullableDateTimeFieldUpdateOperationsInput.schema";
 
 import type { Prisma } from "@prisma/client";
@@ -42,6 +43,9 @@ const Schema: z.ZodType<Prisma.ExerciseUpdateWithoutTagsInput> = z
         z.string(),
         z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
       ])
+      .optional(),
+    workouts: z
+      .lazy(() => WorkoutUpdateManyWithoutExercisesNestedInputObjectSchema)
       .optional(),
     createdAt: z
       .union([

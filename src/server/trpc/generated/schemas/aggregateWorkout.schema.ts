@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { WorkoutOrderByWithRelationInputObjectSchema } from "./objects/WorkoutOrderByWithRelationInput.schema";
+import { WorkoutOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/WorkoutOrderByWithRelationAndSearchRelevanceInput.schema";
 import { WorkoutWhereInputObjectSchema } from "./objects/WorkoutWhereInput.schema";
 import { WorkoutWhereUniqueInputObjectSchema } from "./objects/WorkoutWhereUniqueInput.schema";
 import { WorkoutCountAggregateInputObjectSchema } from "./objects/WorkoutCountAggregateInput.schema";
@@ -11,8 +11,8 @@ import { WorkoutSumAggregateInputObjectSchema } from "./objects/WorkoutSumAggreg
 export const WorkoutAggregateSchema = z.object({
   orderBy: z
     .union([
-      WorkoutOrderByWithRelationInputObjectSchema,
-      WorkoutOrderByWithRelationInputObjectSchema.array(),
+      WorkoutOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      WorkoutOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: WorkoutWhereInputObjectSchema.optional(),

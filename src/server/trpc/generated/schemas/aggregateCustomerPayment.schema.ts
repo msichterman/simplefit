@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CustomerPaymentOrderByWithRelationInputObjectSchema } from "./objects/CustomerPaymentOrderByWithRelationInput.schema";
+import { CustomerPaymentOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/CustomerPaymentOrderByWithRelationAndSearchRelevanceInput.schema";
 import { CustomerPaymentWhereInputObjectSchema } from "./objects/CustomerPaymentWhereInput.schema";
 import { CustomerPaymentWhereUniqueInputObjectSchema } from "./objects/CustomerPaymentWhereUniqueInput.schema";
 import { CustomerPaymentCountAggregateInputObjectSchema } from "./objects/CustomerPaymentCountAggregateInput.schema";
@@ -9,8 +9,8 @@ import { CustomerPaymentMaxAggregateInputObjectSchema } from "./objects/Customer
 export const CustomerPaymentAggregateSchema = z.object({
   orderBy: z
     .union([
-      CustomerPaymentOrderByWithRelationInputObjectSchema,
-      CustomerPaymentOrderByWithRelationInputObjectSchema.array(),
+      CustomerPaymentOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      CustomerPaymentOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: CustomerPaymentWhereInputObjectSchema.optional(),

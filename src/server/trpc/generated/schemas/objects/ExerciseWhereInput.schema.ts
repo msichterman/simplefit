@@ -2,6 +2,7 @@ import { z } from "zod";
 import { IntFilterObjectSchema } from "./IntFilter.schema";
 import { StringFilterObjectSchema } from "./StringFilter.schema";
 import { TagListRelationFilterObjectSchema } from "./TagListRelationFilter.schema";
+import { WorkoutListRelationFilterObjectSchema } from "./WorkoutListRelationFilter.schema";
 import { DateTimeNullableFilterObjectSchema } from "./DateTimeNullableFilter.schema";
 
 import type { Prisma } from "@prisma/client";
@@ -42,6 +43,7 @@ const Schema: z.ZodType<Prisma.ExerciseWhereInput> = z
     exampleLink: z
       .union([z.lazy(() => StringFilterObjectSchema), z.string()])
       .optional(),
+    workouts: z.lazy(() => WorkoutListRelationFilterObjectSchema).optional(),
     createdAt: z
       .union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.date()])
       .optional()

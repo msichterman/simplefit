@@ -2,8 +2,9 @@ import { z } from "zod";
 import { SortOrderSchema } from "../enums/SortOrder.schema";
 import { AccountOrderByRelationAggregateInputObjectSchema } from "./AccountOrderByRelationAggregateInput.schema";
 import { SessionOrderByRelationAggregateInputObjectSchema } from "./SessionOrderByRelationAggregateInput.schema";
-import { CustomerPaymentOrderByWithRelationInputObjectSchema } from "./CustomerPaymentOrderByWithRelationInput.schema";
+import { CustomerPaymentOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./CustomerPaymentOrderByWithRelationAndSearchRelevanceInput.schema";
 import { WorkoutOrderByRelationAggregateInputObjectSchema } from "./WorkoutOrderByRelationAggregateInput.schema";
+import { UserOrderByRelevanceInputObjectSchema } from "./UserOrderByRelevanceInput.schema";
 
 import type { Prisma } from "@prisma/client";
 
@@ -23,7 +24,10 @@ const Schema: z.ZodType<Prisma.UserOrderByWithRelationAndSearchRelevanceInput> =
         .optional(),
       role: z.lazy(() => SortOrderSchema).optional(),
       customerPayment: z
-        .lazy(() => CustomerPaymentOrderByWithRelationInputObjectSchema)
+        .lazy(
+          () =>
+            CustomerPaymentOrderByWithRelationAndSearchRelevanceInputObjectSchema
+        )
         .optional(),
       authoredWorkouts: z
         .lazy(() => WorkoutOrderByRelationAggregateInputObjectSchema)
@@ -34,7 +38,11 @@ const Schema: z.ZodType<Prisma.UserOrderByWithRelationAndSearchRelevanceInput> =
       username: z.lazy(() => SortOrderSchema).optional(),
       createdAt: z.lazy(() => SortOrderSchema).optional(),
       updatedAt: z.lazy(() => SortOrderSchema).optional(),
+      _relevance: z
+        .lazy(() => UserOrderByRelevanceInputObjectSchema)
+        .optional(),
     })
     .strict();
 
-export const UserOrderByWithRelationInputObjectSchema = Schema;
+export const UserOrderByWithRelationAndSearchRelevanceInputObjectSchema =
+  Schema;

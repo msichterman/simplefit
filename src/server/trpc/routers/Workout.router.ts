@@ -28,7 +28,17 @@ export const workoutsRouter = router({
   createOneWorkout: protectedProcedure
     .input(WorkoutCreateOneSchema)
     .mutation(async ({ ctx, input }) => {
-      const createOneWorkout = await ctx.prisma.workout.create(input);
+      const createOneWorkout = await ctx.prisma.workout.create({
+        data: {
+          name: input.data.name,
+          description: input.data.description,
+          author: {
+            connect: {
+              id: ctx.session.user.id,
+            },
+          },
+        },
+      });
       return createOneWorkout;
     }),
   deleteManyWorkout: protectedProcedure

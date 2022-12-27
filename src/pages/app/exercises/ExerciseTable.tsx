@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useRef, useState } from "react";
 import {
   ChevronLeftIcon,
@@ -11,11 +12,20 @@ import ExternalLink from "../../../components/ExternalLink";
 import { trpc } from "@/libs/utils/trpc";
 import FullBleedSpinner from "@/components/utils/FullBleedSpinner";
 
-export default function ExerciseTable() {
+type ExerciseTableProps = {
+  selectedExercises: Exercise[];
+  setSelectedExercises: Dispatch<SetStateAction<Exercise[]>>;
+  setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export default function ExerciseTable({
+  selectedExercises,
+  setSelectedExercises,
+  setSidebarOpen,
+}: ExerciseTableProps) {
   const checkbox = useRef<HTMLInputElement | null>(null);
   const [checked, setChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
-  const [selectedExercises, setSelectedExercises] = useState<Exercise[]>([]);
   const [take] = useState(20);
   const [skip, setSkip] = useState(0);
   const [pageCount, setPageCount] = useState<number | null>(null);
@@ -161,7 +171,7 @@ export default function ExerciseTable() {
                 <div className="absolute left-12 top-2 z-20 flex h-12 items-center space-x-3 rounded-md bg-amber-600 px-2 sm:left-16">
                   <span className="px-2 align-middle text-xxs leading-tight text-amber-50">{`${selectedExercises.length} exercises selected`}</span>
                   <button
-                    type="button"
+                    onClick={() => setSidebarOpen(true)}
                     className="inline-flex items-center rounded border border-neutral-300 bg-zinc-50 px-2.5 py-1.5 text-xs font-medium text-neutral-700 shadow-sm hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-900 dark:bg-neutral-700 dark:text-zinc-100"
                   >
                     Add to workout...

@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { TagUncheckedCreateNestedManyWithoutExercisesInputObjectSchema } from "./TagUncheckedCreateNestedManyWithoutExercisesInput.schema";
+import { WorkoutUncheckedCreateNestedManyWithoutExercisesInputObjectSchema } from "./WorkoutUncheckedCreateNestedManyWithoutExercisesInput.schema";
 
 import type { Prisma } from "@prisma/client";
 
@@ -15,6 +16,11 @@ const Schema: z.ZodType<Prisma.ExerciseUncheckedCreateInput> = z
       .lazy(() => TagUncheckedCreateNestedManyWithoutExercisesInputObjectSchema)
       .optional(),
     exampleLink: z.string(),
+    workouts: z
+      .lazy(
+        () => WorkoutUncheckedCreateNestedManyWithoutExercisesInputObjectSchema
+      )
+      .optional(),
     createdAt: z.date().optional().nullable(),
     updatedAt: z.date().optional().nullable(),
   })

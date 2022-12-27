@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { TagOrderByWithRelationInputObjectSchema } from "./objects/TagOrderByWithRelationInput.schema";
+import { TagOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/TagOrderByWithRelationAndSearchRelevanceInput.schema";
 import { TagWhereInputObjectSchema } from "./objects/TagWhereInput.schema";
 import { TagWhereUniqueInputObjectSchema } from "./objects/TagWhereUniqueInput.schema";
 import { TagCountAggregateInputObjectSchema } from "./objects/TagCountAggregateInput.schema";
@@ -11,8 +11,8 @@ import { TagSumAggregateInputObjectSchema } from "./objects/TagSumAggregateInput
 export const TagAggregateSchema = z.object({
   orderBy: z
     .union([
-      TagOrderByWithRelationInputObjectSchema,
-      TagOrderByWithRelationInputObjectSchema.array(),
+      TagOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      TagOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: TagWhereInputObjectSchema.optional(),

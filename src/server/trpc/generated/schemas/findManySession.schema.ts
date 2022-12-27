@@ -1,14 +1,16 @@
 import { z } from "zod";
-import { SessionOrderByWithRelationInputObjectSchema } from "./objects/SessionOrderByWithRelationInput.schema";
+import { SessionIncludeObjectSchema } from "./objects/SessionInclude.schema";
+import { SessionOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/SessionOrderByWithRelationAndSearchRelevanceInput.schema";
 import { SessionWhereInputObjectSchema } from "./objects/SessionWhereInput.schema";
 import { SessionWhereUniqueInputObjectSchema } from "./objects/SessionWhereUniqueInput.schema";
 import { SessionScalarFieldEnumSchema } from "./enums/SessionScalarFieldEnum.schema";
 
 export const SessionFindManySchema = z.object({
+  include: z.lazy(() => SessionIncludeObjectSchema.optional()),
   orderBy: z
     .union([
-      SessionOrderByWithRelationInputObjectSchema,
-      SessionOrderByWithRelationInputObjectSchema.array(),
+      SessionOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      SessionOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: SessionWhereInputObjectSchema.optional(),

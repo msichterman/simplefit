@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SessionOrderByWithRelationInputObjectSchema } from "./objects/SessionOrderByWithRelationInput.schema";
+import { SessionOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/SessionOrderByWithRelationAndSearchRelevanceInput.schema";
 import { SessionWhereInputObjectSchema } from "./objects/SessionWhereInput.schema";
 import { SessionWhereUniqueInputObjectSchema } from "./objects/SessionWhereUniqueInput.schema";
 import { SessionCountAggregateInputObjectSchema } from "./objects/SessionCountAggregateInput.schema";
@@ -9,8 +9,8 @@ import { SessionMaxAggregateInputObjectSchema } from "./objects/SessionMaxAggreg
 export const SessionAggregateSchema = z.object({
   orderBy: z
     .union([
-      SessionOrderByWithRelationInputObjectSchema,
-      SessionOrderByWithRelationInputObjectSchema.array(),
+      SessionOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      SessionOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: SessionWhereInputObjectSchema.optional(),

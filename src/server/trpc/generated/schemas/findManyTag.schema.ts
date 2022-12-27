@@ -1,14 +1,16 @@
 import { z } from "zod";
-import { TagOrderByWithRelationInputObjectSchema } from "./objects/TagOrderByWithRelationInput.schema";
+import { TagIncludeObjectSchema } from "./objects/TagInclude.schema";
+import { TagOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/TagOrderByWithRelationAndSearchRelevanceInput.schema";
 import { TagWhereInputObjectSchema } from "./objects/TagWhereInput.schema";
 import { TagWhereUniqueInputObjectSchema } from "./objects/TagWhereUniqueInput.schema";
 import { TagScalarFieldEnumSchema } from "./enums/TagScalarFieldEnum.schema";
 
 export const TagFindManySchema = z.object({
+  include: z.lazy(() => TagIncludeObjectSchema.optional()),
   orderBy: z
     .union([
-      TagOrderByWithRelationInputObjectSchema,
-      TagOrderByWithRelationInputObjectSchema.array(),
+      TagOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      TagOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: TagWhereInputObjectSchema.optional(),

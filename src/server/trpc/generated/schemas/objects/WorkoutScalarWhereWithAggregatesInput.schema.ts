@@ -30,6 +30,13 @@ const Schema: z.ZodType<Prisma.WorkoutScalarWhereWithAggregatesInput> = z
     name: z
       .union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()])
       .optional(),
+    description: z
+      .union([
+        z.lazy(() => StringNullableWithAggregatesFilterObjectSchema),
+        z.string(),
+      ])
+      .optional()
+      .nullable(),
     authorId: z
       .union([
         z.lazy(() => StringNullableWithAggregatesFilterObjectSchema),

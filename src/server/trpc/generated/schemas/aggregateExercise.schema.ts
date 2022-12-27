@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ExerciseOrderByWithRelationInputObjectSchema } from "./objects/ExerciseOrderByWithRelationInput.schema";
+import { ExerciseOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/ExerciseOrderByWithRelationAndSearchRelevanceInput.schema";
 import { ExerciseWhereInputObjectSchema } from "./objects/ExerciseWhereInput.schema";
 import { ExerciseWhereUniqueInputObjectSchema } from "./objects/ExerciseWhereUniqueInput.schema";
 import { ExerciseCountAggregateInputObjectSchema } from "./objects/ExerciseCountAggregateInput.schema";
@@ -11,8 +11,8 @@ import { ExerciseSumAggregateInputObjectSchema } from "./objects/ExerciseSumAggr
 export const ExerciseAggregateSchema = z.object({
   orderBy: z
     .union([
-      ExerciseOrderByWithRelationInputObjectSchema,
-      ExerciseOrderByWithRelationInputObjectSchema.array(),
+      ExerciseOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      ExerciseOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: ExerciseWhereInputObjectSchema.optional(),

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { VerificationTokenOrderByWithRelationInputObjectSchema } from "./objects/VerificationTokenOrderByWithRelationInput.schema";
+import { VerificationTokenOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/VerificationTokenOrderByWithRelationAndSearchRelevanceInput.schema";
 import { VerificationTokenWhereInputObjectSchema } from "./objects/VerificationTokenWhereInput.schema";
 import { VerificationTokenWhereUniqueInputObjectSchema } from "./objects/VerificationTokenWhereUniqueInput.schema";
 import { VerificationTokenScalarFieldEnumSchema } from "./enums/VerificationTokenScalarFieldEnum.schema";
@@ -7,8 +7,8 @@ import { VerificationTokenScalarFieldEnumSchema } from "./enums/VerificationToke
 export const VerificationTokenFindFirstSchema = z.object({
   orderBy: z
     .union([
-      VerificationTokenOrderByWithRelationInputObjectSchema,
-      VerificationTokenOrderByWithRelationInputObjectSchema.array(),
+      VerificationTokenOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      VerificationTokenOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: VerificationTokenWhereInputObjectSchema.optional(),

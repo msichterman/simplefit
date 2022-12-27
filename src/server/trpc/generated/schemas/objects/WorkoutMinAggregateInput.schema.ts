@@ -6,6 +6,7 @@ const Schema: z.ZodType<Prisma.WorkoutMinAggregateInputType> = z
   .object({
     id: z.literal(true).optional(),
     name: z.literal(true).optional(),
+    description: z.literal(true).optional(),
     authorId: z.literal(true).optional(),
     createdAt: z.literal(true).optional(),
     updatedAt: z.literal(true).optional(),

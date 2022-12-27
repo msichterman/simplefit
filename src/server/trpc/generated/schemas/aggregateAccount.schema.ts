@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { AccountOrderByWithRelationInputObjectSchema } from "./objects/AccountOrderByWithRelationInput.schema";
+import { AccountOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/AccountOrderByWithRelationAndSearchRelevanceInput.schema";
 import { AccountWhereInputObjectSchema } from "./objects/AccountWhereInput.schema";
 import { AccountWhereUniqueInputObjectSchema } from "./objects/AccountWhereUniqueInput.schema";
 import { AccountCountAggregateInputObjectSchema } from "./objects/AccountCountAggregateInput.schema";
@@ -11,8 +11,8 @@ import { AccountSumAggregateInputObjectSchema } from "./objects/AccountSumAggreg
 export const AccountAggregateSchema = z.object({
   orderBy: z
     .union([
-      AccountOrderByWithRelationInputObjectSchema,
-      AccountOrderByWithRelationInputObjectSchema.array(),
+      AccountOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      AccountOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: AccountWhereInputObjectSchema.optional(),

@@ -13,9 +13,9 @@ const Schema: z.ZodType<Prisma.StringFilter> = z
     gt: z.string().optional(),
     gte: z.string().optional(),
     contains: z.string().optional(),
-    search: z.string().optional(),
     startsWith: z.string().optional(),
     endsWith: z.string().optional(),
+    search: z.string().optional(),
     not: z
       .union([z.string(), z.lazy(() => NestedStringFilterObjectSchema)])
       .optional(),

@@ -3,6 +3,7 @@ import { IntFieldUpdateOperationsInputObjectSchema } from "./IntFieldUpdateOpera
 import { StringFieldUpdateOperationsInputObjectSchema } from "./StringFieldUpdateOperationsInput.schema";
 import { NullableStringFieldUpdateOperationsInputObjectSchema } from "./NullableStringFieldUpdateOperationsInput.schema";
 import { UserUncheckedUpdateManyWithoutSavedWorkoutsNestedInputObjectSchema } from "./UserUncheckedUpdateManyWithoutSavedWorkoutsNestedInput.schema";
+import { ExerciseUncheckedUpdateManyWithoutWorkoutsNestedInputObjectSchema } from "./ExerciseUncheckedUpdateManyWithoutWorkoutsNestedInput.schema";
 import { NullableDateTimeFieldUpdateOperationsInputObjectSchema } from "./NullableDateTimeFieldUpdateOperationsInput.schema";
 
 import type { Prisma } from "@prisma/client";
@@ -21,6 +22,13 @@ const Schema: z.ZodType<Prisma.WorkoutUncheckedUpdateWithoutTagsInput> = z
         z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
       ])
       .optional(),
+    description: z
+      .union([
+        z.string(),
+        z.lazy(() => NullableStringFieldUpdateOperationsInputObjectSchema),
+      ])
+      .optional()
+      .nullable(),
     authorId: z
       .union([
         z.string(),
@@ -31,6 +39,11 @@ const Schema: z.ZodType<Prisma.WorkoutUncheckedUpdateWithoutTagsInput> = z
     savedBy: z
       .lazy(
         () => UserUncheckedUpdateManyWithoutSavedWorkoutsNestedInputObjectSchema
+      )
+      .optional(),
+    exercises: z
+      .lazy(
+        () => ExerciseUncheckedUpdateManyWithoutWorkoutsNestedInputObjectSchema
       )
       .optional(),
     createdAt: z

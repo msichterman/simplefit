@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { UserOrderByWithRelationInputObjectSchema } from "./objects/UserOrderByWithRelationInput.schema";
+import { UserOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/UserOrderByWithRelationAndSearchRelevanceInput.schema";
 import { UserWhereInputObjectSchema } from "./objects/UserWhereInput.schema";
 import { UserWhereUniqueInputObjectSchema } from "./objects/UserWhereUniqueInput.schema";
 import { UserCountAggregateInputObjectSchema } from "./objects/UserCountAggregateInput.schema";
@@ -9,8 +9,8 @@ import { UserMaxAggregateInputObjectSchema } from "./objects/UserMaxAggregateInp
 export const UserAggregateSchema = z.object({
   orderBy: z
     .union([
-      UserOrderByWithRelationInputObjectSchema,
-      UserOrderByWithRelationInputObjectSchema.array(),
+      UserOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      UserOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: UserWhereInputObjectSchema.optional(),

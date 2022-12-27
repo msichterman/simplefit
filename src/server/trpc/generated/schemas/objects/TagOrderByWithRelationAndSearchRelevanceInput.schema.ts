@@ -2,6 +2,7 @@ import { z } from "zod";
 import { SortOrderSchema } from "../enums/SortOrder.schema";
 import { ExerciseOrderByRelationAggregateInputObjectSchema } from "./ExerciseOrderByRelationAggregateInput.schema";
 import { WorkoutOrderByRelationAggregateInputObjectSchema } from "./WorkoutOrderByRelationAggregateInput.schema";
+import { TagOrderByRelevanceInputObjectSchema } from "./TagOrderByRelevanceInput.schema";
 
 import type { Prisma } from "@prisma/client";
 
@@ -16,7 +17,8 @@ const Schema: z.ZodType<Prisma.TagOrderByWithRelationAndSearchRelevanceInput> =
       workouts: z
         .lazy(() => WorkoutOrderByRelationAggregateInputObjectSchema)
         .optional(),
+      _relevance: z.lazy(() => TagOrderByRelevanceInputObjectSchema).optional(),
     })
     .strict();
 
-export const TagOrderByWithRelationInputObjectSchema = Schema;
+export const TagOrderByWithRelationAndSearchRelevanceInputObjectSchema = Schema;

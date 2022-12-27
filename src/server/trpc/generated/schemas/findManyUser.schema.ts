@@ -1,14 +1,16 @@
 import { z } from "zod";
-import { UserOrderByWithRelationInputObjectSchema } from "./objects/UserOrderByWithRelationInput.schema";
+import { UserIncludeObjectSchema } from "./objects/UserInclude.schema";
+import { UserOrderByWithRelationAndSearchRelevanceInputObjectSchema } from "./objects/UserOrderByWithRelationAndSearchRelevanceInput.schema";
 import { UserWhereInputObjectSchema } from "./objects/UserWhereInput.schema";
 import { UserWhereUniqueInputObjectSchema } from "./objects/UserWhereUniqueInput.schema";
 import { UserScalarFieldEnumSchema } from "./enums/UserScalarFieldEnum.schema";
 
 export const UserFindManySchema = z.object({
+  include: z.lazy(() => UserIncludeObjectSchema.optional()),
   orderBy: z
     .union([
-      UserOrderByWithRelationInputObjectSchema,
-      UserOrderByWithRelationInputObjectSchema.array(),
+      UserOrderByWithRelationAndSearchRelevanceInputObjectSchema,
+      UserOrderByWithRelationAndSearchRelevanceInputObjectSchema.array(),
     ])
     .optional(),
   where: UserWhereInputObjectSchema.optional(),

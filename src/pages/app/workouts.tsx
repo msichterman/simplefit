@@ -1,6 +1,14 @@
 import AppLayout from "@/layouts/AppLayout";
+import { trpc } from "@/libs/utils/trpc";
 
 export default function Workouts() {
+  const { data: workouts, isLoading } = trpc.workout.findManyWorkout.useQuery({
+    include: {
+      exercises: true,
+    },
+  });
+  console.log(workouts);
+
   return (
     <AppLayout>
       <div className="py-6">

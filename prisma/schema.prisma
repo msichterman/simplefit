@@ -19,6 +19,12 @@ datasource db {
 //   output         = "../src/server/trpc/generated"
 // }
 
+// generator zod {
+//   provider          = "prisma-zod-generator"
+//   output            = "../src/server/trpc/generated"
+//   isGenerateInclude = true
+// }
+
 // Necessary for Next auth
 model Account {
   id                String  @id @default(cuid())
@@ -86,12 +92,14 @@ model VerificationToken {
 }
 
 model Workout {
-  id       Int     @id @default(autoincrement())
-  name     String
-  tags     Tag[]
-  author   User?   @relation(name: "WorkoutAuthor", fields: [authorId], references: [id])
-  authorId String?
-  savedBy  User[]  @relation("WorkoutSaves")
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String?    @db.Text
+  tags        Tag[]
+  author      User?      @relation(name: "WorkoutAuthor", fields: [authorId], references: [id])
+  authorId    String?
+  savedBy     User[]     @relation("WorkoutSaves")
+  exercises   Exercise[]
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
@@ -100,14 +108,15 @@ model Workout {
 }
 
 model Exercise {
-  id          Int    @id @default(autoincrement())
-  name        String @unique
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
   difficulty  String
-  sets        Int    @default(1)
+  sets        Int       @default(1)
   reps        String
   rest        String
   tags        Tag[]
   exampleLink String
+  workouts    Workout[]
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
