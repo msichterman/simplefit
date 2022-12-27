@@ -72,14 +72,14 @@ export default function PaginatedTableWithCheckboxes() {
             suggestions as well as a links to see examples.
           </p>
         </div>
-        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+        {/* <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
           <button
             type="button"
             className="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 sm:w-auto"
           >
             Add exercise
           </button>
-        </div>
+        </div> */}
       </div>
       <form
         className="mt-8 mb-4"
@@ -129,10 +129,13 @@ export default function PaginatedTableWithCheckboxes() {
             }}
           />
           <button
-            onClick={() => setSelectedExercises([])}
+            onClick={() => {
+              setSearchString("");
+              setSearchInput("");
+            }}
             className={clsx(
               "absolute bottom-0 right-24 rounded-lg py-4 text-sm font-medium text-neutral-900 outline-none dark:text-neutral-50",
-              selectedExercises.length === 0 && "hidden"
+              Boolean(!searchInput) && "hidden"
             )}
           >
             <XCircleIcon className="h-6 w-6" />
@@ -146,9 +149,9 @@ export default function PaginatedTableWithCheckboxes() {
         </div>
       </form>
       <div className="flex flex-col">
-        <div className="-my-2 -mx-4 min-w-full overflow-x-clip sm:-mx-6 lg:-mx-8">
+        <div className="-my-2 -mx-4 min-w-full overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-h-full min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div className="relative min-h-full overflow-clip shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+            <div className="relative min-h-full overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
               {selectedExercises.length > 0 && (
                 <div className="absolute left-12 top-2 z-20 flex h-12 items-center space-x-3 rounded-md bg-amber-600 px-2 sm:left-16">
                   <span className="px-2 align-middle text-xxs leading-tight text-amber-50">{`${selectedExercises.length} exercises selected`}</span>
@@ -161,7 +164,7 @@ export default function PaginatedTableWithCheckboxes() {
                 </div>
               )}
               <table className="min-h-96 min-w-full table-fixed divide-y divide-neutral-300 dark:divide-neutral-900">
-                <thead className="sticky top-12 z-10 h-16 bg-zinc-200/60 backdrop-blur-sm dark:bg-neutral-900/60 sm:top-0">
+                <thead className="relative z-10 h-16 bg-zinc-200/60 backdrop-blur-sm dark:bg-neutral-900/60 ">
                   <tr>
                     <th
                       scope="col"
@@ -177,43 +180,43 @@ export default function PaginatedTableWithCheckboxes() {
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-12 z-10 min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
+                      className="relative z-10 min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
                     >
                       Name
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
                     >
                       Difficulty
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
                     >
                       Sets
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
                     >
                       Reps
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
                     >
                       Rest
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-12 z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 sm:top-0"
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
                     >
                       Example
                     </th>
                     <th
                       scope="col"
-                      className="sticky top-12 z-10 py-3.5 pl-3 pr-4 sm:top-0 sm:pr-6"
+                      className="relative z-10 py-3.5 pl-3 pr-4  sm:pr-6"
                     >
                       <span className="sr-only">Edit</span>
                     </th>
@@ -297,22 +300,22 @@ export default function PaginatedTableWithCheckboxes() {
         </div>
       </div>
       {count !== undefined && pageCount !== null && (
-        <div className="flex items-center justify-between border-t border-neutral-200 bg-zinc-50 px-4 py-3 dark:border-neutral-900 dark:bg-neutral-800 sm:px-6">
+        <div className="-mx-4 mt-2 flex items-center justify-between border-t border-neutral-200 bg-zinc-50 px-4 py-3 dark:border-neutral-900 dark:bg-neutral-900 sm:-mx-6 sm:px-6 md:mx-0">
           <div className="flex flex-1 justify-between sm:hidden">
             <button
               onClick={() => setSkip((s) => (s >= take ? s - take : s))}
-              className="relative inline-flex items-center rounded-md border border-neutral-300 bg-zinc-50 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-zinc-50 dark:border-neutral-900 dark:bg-neutral-700"
+              className="relative inline-flex items-center rounded-md border border-neutral-300 bg-zinc-50 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-zinc-50 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-50"
             >
               Previous
             </button>
             <button
               onClick={() => setSkip((s) => (s + take <= count ? s + take : s))}
-              className="relative ml-3 inline-flex items-center rounded-md border border-neutral-300 bg-zinc-50 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-zinc-50 dark:border-neutral-900 dark:bg-neutral-700"
+              className="relative ml-3 inline-flex items-center rounded-md border border-neutral-300 bg-zinc-50 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-zinc-50 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-50"
             >
               Next
             </button>
           </div>
-          <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+          <div className="hidden w-full sm:flex sm:flex-1 sm:items-center sm:justify-between">
             {count === 0 ? (
               <span className="text-sm text-neutral-700 dark:text-zinc-50">
                 No exercises found
