@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import FullPageSpinner from "@/components/FullPageSpinner";
+import FullPageSpinner from "@/components/utils/FullPageSpinner";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 

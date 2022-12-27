@@ -9,13 +9,14 @@ import {
 import { type Exercise } from "@prisma/client";
 import ExternalLink from "../../../components/ExternalLink";
 import { trpc } from "@/libs/utils/trpc";
+import FullBleedSpinner from "@/components/utils/FullBleedSpinner";
 
-export default function PaginatedTableWithCheckboxes() {
+export default function ExerciseTable() {
   const checkbox = useRef<HTMLInputElement | null>(null);
   const [checked, setChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
   const [selectedExercises, setSelectedExercises] = useState<Exercise[]>([]);
-  const [take, setTake] = useState(20);
+  const [take] = useState(20);
   const [skip, setSkip] = useState(0);
   const [pageCount, setPageCount] = useState<number | null>(null);
   const [searchInput, setSearchInput] = useState("");
@@ -49,7 +50,7 @@ export default function PaginatedTableWithCheckboxes() {
     });
 
   useEffect(() => {
-    if (count) {
+    if (count !== undefined) {
       const pages = Math.ceil(count / take);
       setPageCount(pages);
     }
@@ -303,6 +304,11 @@ export default function PaginatedTableWithCheckboxes() {
           </div>
         </div>
       </div>
+      {isLoading && (
+        <div className="h-[720px]">
+          <FullBleedSpinner />
+        </div>
+      )}
       {count !== undefined && pageCount !== null && (
         <div className="-mx-4 mt-2 flex items-center justify-between border-t border-neutral-200 bg-zinc-50 px-4 py-3 dark:border-neutral-900 dark:bg-neutral-900 sm:-mx-6 sm:px-6 md:mx-0">
           <div className="flex flex-1 justify-between sm:hidden">

@@ -1,4 +1,4 @@
-import PaginatedTableWithCheckboxes from "./PaginatedTableWithCheckboxes";
+import ExerciseTable from "./ExerciseTable";
 import AppLayout from "@/layouts/AppLayout";
 
 export default function Exercises() {
@@ -9,7 +9,7 @@ export default function Exercises() {
           <h1 className="text-2xl font-semibold text-gray-900 dark:text-zinc-50">
             Exercises
           </h1>
-          <PaginatedTableWithCheckboxes />
+          <ExerciseTable />
         </div>
       </div>
     </AppLayout>

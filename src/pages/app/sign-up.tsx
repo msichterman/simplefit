@@ -5,7 +5,7 @@ import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SimpleFitIcon from "@/components/vectors/SimpleFitIcon";
-import FullPageSpinner from "@/components/FullPageSpinner";
+import FullPageSpinner from "@/components/utils/FullPageSpinner";
 import Link from "next/link";
 
 export default function SignIn() {
