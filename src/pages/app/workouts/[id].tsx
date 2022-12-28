@@ -3,12 +3,13 @@ import AppLayout from "@/layouts/AppLayout";
 import { trpc } from "@/libs/utils/trpc";
 import { useRouter } from "next/router";
 import ExerciseTableCondensed from "../exercises/ExerciseTableCondensed";
+import type { WorkoutWithAuthor } from "./WorkoutList";
 
 export default function WorkoutDetailPage() {
   const router = useRouter();
   const { id } = router.query;
   const workoutId = parseInt(id as string);
-  const { data: workout, isLoading } = trpc.workout.findUniqueWorkout.useQuery({
+  const { data, isLoading } = trpc.workout.findUniqueWorkout.useQuery({
     include: {
       exercises: true,
       tags: true,
@@ -23,6 +24,7 @@ export default function WorkoutDetailPage() {
       id: workoutId,
     },
   });
+  const workout = data as WorkoutWithAuthor;
   return (
     <AppLayout>
       {workout ? (
