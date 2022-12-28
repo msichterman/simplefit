@@ -4,7 +4,7 @@ import type { Dispatch, SetStateAction } from "react";
 
 type ExerciseTableCondensedProps = {
   exercises: Exercise[];
-  setExercises: Dispatch<SetStateAction<Exercise[]>>;
+  setExercises?: Dispatch<SetStateAction<Exercise[]>>;
 };
 
 export default function ExerciseTableCondensed({
@@ -37,9 +37,14 @@ export default function ExerciseTableCondensed({
                   >
                     Reps
                   </th>
-                  <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                    <span className="sr-only">Remove</span>
-                  </th>
+                  {setExercises !== undefined && (
+                    <th
+                      scope="col"
+                      className="relative py-3.5 pl-3 pr-4 sm:pr-6"
+                    >
+                      <span className="sr-only">Remove</span>
+                    </th>
+                  )}
                 </tr>
               </thead>
               <tbody className="divide-y divide-neutral-200 bg-white">
@@ -54,22 +59,24 @@ export default function ExerciseTableCondensed({
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-neutral-500">
                       {exercise.reps}
                     </td>
-                    <td className="relative mt-0.5 flex h-full items-center whitespace-nowrap py-4 px-3 text-right text-sm font-medium">
-                      <button
-                        onClick={() =>
-                          setExercises(
-                            exercises.filter((e) => e.id !== exercise.id)
-                          )
-                        }
-                        type="button"
-                        className="text-amber-600 hover:text-amber-900"
-                      >
-                        <XCircleIcon className="h-5 w-5" />
-                        <span className="sr-only">
-                          Remove - {exercise.name}
-                        </span>
-                      </button>
-                    </td>
+                    {setExercises !== undefined && (
+                      <td className="relative mt-0.5 flex h-full items-center whitespace-nowrap py-4 px-3 text-right text-sm font-medium">
+                        <button
+                          onClick={() =>
+                            setExercises(
+                              exercises.filter((e) => e.id !== exercise.id)
+                            )
+                          }
+                          type="button"
+                          className="text-amber-600 hover:text-amber-900"
+                        >
+                          <XCircleIcon className="h-5 w-5" />
+                          <span className="sr-only">
+                            Remove - {exercise.name}
+                          </span>
+                        </button>
+                      </td>
+                    )}
                   </tr>
                 ))}
               </tbody>
