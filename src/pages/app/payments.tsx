@@ -44,7 +44,7 @@ export default function Payments() {
     <AppLayout>
       <div className="py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-zinc-50">
+          <h1 className="text-2xl font-semibold text-neutral-900 dark:text-zinc-50">
             Payments
           </h1>
         </div>
@@ -60,7 +60,7 @@ export default function Payments() {
                       <div>
                         <h2
                           id="plan-heading"
-                          className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-50"
+                          className="text-lg font-medium leading-6 text-neutral-900 dark:text-zinc-50"
                         >
                           Plan
                         </h2>
@@ -89,7 +89,7 @@ export default function Payments() {
                                     : "",
                                   checked
                                     ? "z-10 border-amber-200 bg-amber-50"
-                                    : "border-gray-200",
+                                    : "border-neutral-200",
                                   "relative flex cursor-pointer flex-col border p-4 focus:outline-none md:grid md:grid-cols-3 md:pl-4 md:pr-6"
                                 )
                               }
@@ -101,9 +101,9 @@ export default function Payments() {
                                       className={clsx(
                                         checked
                                           ? "border-transparent bg-amber-500"
-                                          : "border-gray-300 bg-white",
+                                          : "border-neutral-300 bg-white",
                                         active
-                                          ? "ring-2 ring-gray-900 ring-offset-2"
+                                          ? "ring-2 ring-neutral-900 ring-offset-2"
                                           : "",
                                         "flex h-4 w-4 items-center justify-center rounded-full border"
                                       )}
@@ -113,7 +113,7 @@ export default function Payments() {
                                     </span>
                                     <RadioGroup.Label
                                       as="span"
-                                      className="ml-3 font-medium text-gray-900 dark:text-zinc-50"
+                                      className="ml-3 font-medium text-neutral-900 dark:text-zinc-50"
                                     >
                                       {plan.name}
                                     </RadioGroup.Label>
@@ -126,7 +126,7 @@ export default function Payments() {
                                       className={clsx(
                                         checked
                                           ? "text-amber-900"
-                                          : "text-gray-900 dark:text-zinc-50",
+                                          : "text-neutral-900 dark:text-zinc-50",
                                         "font-medium"
                                       )}
                                     >
@@ -136,7 +136,7 @@ export default function Payments() {
                                       className={
                                         checked
                                           ? "text-amber-700"
-                                          : "text-gray-500"
+                                          : "text-neutral-500"
                                       }
                                     >
                                       (${plan.priceYearly} / yr)
@@ -147,7 +147,7 @@ export default function Payments() {
                                     className={clsx(
                                       checked
                                         ? "text-amber-700"
-                                        : "text-gray-500",
+                                        : "text-neutral-500",
                                       "ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right"
                                     )}
                                   >
@@ -167,8 +167,8 @@ export default function Payments() {
                           className={clsx(
                             annualBillingEnabled
                               ? "bg-amber-500"
-                              : "bg-gray-200",
-                            "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+                              : "bg-neutral-200",
+                            "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2"
                           )}
                         >
                           <span
@@ -182,19 +182,19 @@ export default function Payments() {
                           />
                         </Switch>
                         <Switch.Label as="span" className="ml-3">
-                          <span className="text-sm font-medium text-gray-900 dark:text-zinc-50">
+                          <span className="text-sm font-medium text-neutral-900 dark:text-zinc-50">
                             Annual billing
                           </span>
-                          <span className="text-sm text-gray-500">
+                          <span className="text-sm text-neutral-500">
                             (Save 10%)
                           </span>
                         </Switch.Label>
                       </Switch.Group>
                     </div>
-                    <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                    <div className="bg-neutral-50 px-4 py-3 text-right sm:px-6">
                       <button
                         type="submit"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-neutral-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2"
                       >
                         Save
                       </button>
@@ -209,7 +209,7 @@ export default function Payments() {
                   <div className="px-4 sm:px-6">
                     <h2
                       id="billing-history-heading"
-                      className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-50"
+                      className="text-lg font-medium leading-6 text-neutral-900 dark:text-zinc-50"
                     >
                       Billing history
                     </h2>
@@ -217,25 +217,25 @@ export default function Payments() {
                   <div className="mt-6 flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                       <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                        <div className="overflow-hidden border-t border-gray-200">
-                          <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
+                        <div className="overflow-hidden border-t border-neutral-200">
+                          <table className="min-w-full divide-y divide-neutral-200">
+                            <thead className="bg-neutral-50">
                               <tr>
                                 <th
                                   scope="col"
-                                  className="px-6 py-3 text-left text-sm font-semibold text-gray-900 dark:text-zinc-50"
+                                  className="px-6 py-3 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-50"
                                 >
                                   Date
                                 </th>
                                 <th
                                   scope="col"
-                                  className="px-6 py-3 text-left text-sm font-semibold text-gray-900 dark:text-zinc-50"
+                                  className="px-6 py-3 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-50"
                                 >
                                   Description
                                 </th>
                                 <th
                                   scope="col"
-                                  className="px-6 py-3 text-left text-sm font-semibold text-gray-900 dark:text-zinc-50"
+                                  className="px-6 py-3 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-50"
                                 >
                                   Amount
                                 </th>
@@ -244,24 +244,24 @@ export default function Payments() {
                                 */}
                                 <th
                                   scope="col"
-                                  className="relative px-6 py-3 text-left text-sm font-medium text-gray-500"
+                                  className="relative px-6 py-3 text-left text-sm font-medium text-neutral-500"
                                 >
                                   <span className="sr-only">View receipt</span>
                                 </th>
                               </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-200 bg-white">
+                            <tbody className="divide-y divide-neutral-200 bg-white">
                               {payments.map((payment) => (
                                 <tr key={payment.id}>
-                                  <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-zinc-50">
+                                  <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-neutral-900 dark:text-zinc-50">
                                     <time dateTime={payment.datetime}>
                                       {payment.date}
                                     </time>
                                   </td>
-                                  <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                  <td className="whitespace-nowrap px-6 py-4 text-sm text-neutral-500">
                                     {payment.description}
                                   </td>
-                                  <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                  <td className="whitespace-nowrap px-6 py-4 text-sm text-neutral-500">
                                     {payment.amount}
                                   </td>
                                   <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">

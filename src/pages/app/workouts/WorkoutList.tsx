@@ -75,24 +75,24 @@ export default function WorkoutList({ workouts }: WorkoutListProps) {
                 </div>
                 <div className="my-2 sm:flex sm:justify-between">
                   <div className="sm:flex">
-                    <p className="flex items-center text-sm text-gray-500">
+                    <p className="flex items-center text-sm text-neutral-500">
                       <UsersIcon
-                        className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                        className="mr-1.5 h-5 w-5 flex-shrink-0 text-neutral-400"
                         aria-hidden="true"
                       />
                       {workout.author.name}
                     </p>
-                    <p className="mt-2 flex items-center text-xxs text-gray-400 sm:mt-0 sm:ml-6">
+                    <p className="mt-2 flex items-center text-xxs text-neutral-400 sm:mt-0 sm:ml-6">
                       <InformationCircleIcon
-                        className="mr-1.5 h-4 w-4 flex-shrink-0 text-gray-300"
+                        className="mr-1.5 h-4 w-4 flex-shrink-0 text-neutral-300"
                         aria-hidden="true"
                       />
                       {workout.description}
                     </p>
                   </div>
-                  <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                  <div className="mt-2 flex items-center text-sm text-neutral-500 sm:mt-0">
                     <CalendarIcon
-                      className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                      className="mr-1.5 h-5 w-5 flex-shrink-0 text-neutral-400"
                       aria-hidden="true"
                     />
                     <p>

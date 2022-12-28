@@ -47,11 +47,11 @@ export default function SignIn() {
             {session ? (
               <h2>hi {session.user?.name}</h2>
             ) : (
-              <h2 className="dark:text-zinc-50dark:text-zinc-50 mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-zinc-50 dark:text-gray-50">
+              <h2 className="dark:text-zinc-50dark:text-zinc-50 mt-6 text-3xl font-bold tracking-tight text-neutral-900 dark:text-zinc-50 dark:text-neutral-50">
                 Sign up to your account
               </h2>
             )}
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-100">
+            <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-100">
               Already have an account?{" "}
               <Link
                 href="sign-in"
@@ -65,7 +65,7 @@ export default function SignIn() {
           <div className="mt-8">
             <div>
               <div>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-100">
+                <p className="text-sm font-medium text-neutral-600 dark:text-neutral-100">
                   Sign up with
                 </p>
 
@@ -73,7 +73,7 @@ export default function SignIn() {
                   <div>
                     <button
                       onClick={() => signIn("google")}
-                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-zinc-50 py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                      className="inline-flex w-full justify-center rounded-md border border-neutral-300 bg-zinc-50 py-2 px-4 text-sm font-medium text-neutral-500 shadow-sm hover:bg-neutral-50"
                     >
                       <span className="sr-only">Sign up with Google</span>
                       <svg
@@ -89,7 +89,7 @@ export default function SignIn() {
                   <div>
                     <button
                       onClick={() => signIn("twitter")}
-                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-zinc-50 py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                      className="inline-flex w-full justify-center rounded-md border border-neutral-300 bg-zinc-50 py-2 px-4 text-sm font-medium text-neutral-500 shadow-sm hover:bg-neutral-50"
                     >
                       <span className="sr-only">Sign up with Twitter</span>
                       <svg
@@ -110,10 +110,10 @@ export default function SignIn() {
                   className="absolute inset-0 flex items-center"
                   aria-hidden="true"
                 >
-                  <div className="w-full border-t border-gray-300" />
+                  <div className="w-full border-t border-neutral-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="bg-zinc-50 px-2 text-gray-500 dark:bg-neutral-900 dark:text-gray-100">
+                  <span className="bg-zinc-50 px-2 text-neutral-500 dark:bg-neutral-900 dark:text-neutral-100">
                     Or continue with
                   </span>
                 </div>
@@ -129,7 +129,7 @@ export default function SignIn() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-600 dark:text-gray-100"
+                    className="block text-sm font-medium text-neutral-600 dark:text-neutral-100"
                   >
                     Email address
                   </label>
@@ -140,7 +140,7 @@ export default function SignIn() {
                       type="email"
                       autoComplete="email"
                       required
-                      className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-amber-500 dark:bg-gray-900 dark:placeholder-gray-200 sm:text-sm"
+                      className="block w-full appearance-none rounded-md border border-neutral-300 px-3 py-2 placeholder-neutral-400 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-amber-500 dark:bg-neutral-900 dark:placeholder-neutral-200 sm:text-sm"
                     />
                   </div>
                 </div>

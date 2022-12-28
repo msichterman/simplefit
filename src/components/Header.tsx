@@ -206,7 +206,7 @@ const Header = ({ isWide = false }) => {
           aria-orientation="vertical"
           role="menu"
         >
-          <div className="divide-y-2 divide-zinc-50 rounded-lg bg-zinc-50 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-zinc-900">
+          <div className="divide-y-2 divide-zinc-50 rounded-lg bg-zinc-50 shadow-lg ring-1 ring-black ring-opacity-5 dark:divide-zinc-800 dark:bg-zinc-900">
             <div className="px-5 pt-5 pb-6">
               <div className="flex items-center justify-between">
                 <div>

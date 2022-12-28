@@ -60,7 +60,7 @@ const Home: NextPage = () => {
                   </p>
                   <Link
                     className="block w-full rounded-md border border-transparent bg-amber-600 px-5 py-3 text-center text-base font-medium text-zinc-50 shadow hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-2 sm:max-w-fit sm:px-10"
-                    href="/sign-up"
+                    href="/app/sign-up"
                   >
                     Let&apos;s get started
                   </Link>
@@ -234,7 +234,7 @@ const Home: NextPage = () => {
                 </div>
                 <div className="mt-4">
                   <Link
-                    href="/sign-up"
+                    href="/app/sign-up"
                     className="text-base font-medium text-amber-600 dark:text-cyan-400"
                   >
                     Start today for free! &nbsp;&rarr;
