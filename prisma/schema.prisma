@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+  previewFeatures = ["fullTextSearch", "fullTextIndex", "extendedWhereUnique"]
 }
 
 datasource db {
@@ -11,25 +11,10 @@ datasource db {
   relationMode = "prisma"
 }
 
-// generator trpc {
-//   provider       = "prisma-trpc-generator"
-//   withMiddleware = false
-//   withShield     = false
-//   contextPath    = "../src/server/trpc/context"
-//   output         = "../src/server/trpc/generated"
-// }
-
-// generator zod {
-//   provider          = "prisma-zod-generator"
-//   output            = "../src/server/trpc/generated"
-//   isGenerateInclude = true
-//   isGenerateSelect  = true
-// }
-
-// generator erd {
-//   provider = "prisma-erd-generator"
-//   theme    = "neutral"
-// }
+generator erd {
+  provider = "prisma-erd-generator"
+  theme    = "neutral"
+}
 
 // Necessary for Next auth
 model Account {
@@ -73,6 +58,7 @@ model User {
   // Custom Fields
   role             RoleType         @default(USER)
   customerPayment  CustomerPayment?
+  createdExercises Exercise[]
   authoredWorkouts Workout[]        @relation("WorkoutAuthor")
   savedWorkouts    Workout[]        @relation("WorkoutSaves")
   username         String           @unique @default(cuid())
@@ -98,19 +84,32 @@ model VerificationToken {
 }
 
 model Workout {
-  id          Int        @id @default(autoincrement())
+  id          Int            @id @default(autoincrement())
   name        String
-  description String?    @db.Text
+  description String?        @db.Text
+  visibility  VisibilityType @default(PUBLIC)
+  status      StatusType     @default(DRAFT)
   tags        Tag[]
-  author      User?      @relation(name: "WorkoutAuthor", fields: [authorId], references: [id])
+  author      User?          @relation(name: "WorkoutAuthor", fields: [authorId], references: [id])
   authorId    String?
-  savedBy     User[]     @relation("WorkoutSaves")
+  savedBy     User[]         @relation("WorkoutSaves")
   exercises   Exercise[]
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
 
   @@index([authorId])
+}
+
+enum VisibilityType {
+  PUBLIC
+  UNLISTED
+  PRIVATE
+}
+
+enum StatusType {
+  DRAFT
+  PUBLISHED
 }
 
 model Exercise {
@@ -120,13 +119,16 @@ model Exercise {
   sets        Int       @default(1)
   reps        String
   rest        String
-  tags        Tag[]
   exampleLink String
+  author      User?     @relation(fields: [authorId], references: [id])
+  authorId    String?
   workouts    Workout[]
+  tags        Tag[]
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
 
+  @@index([authorId])
   @@fulltext([name])
 }
 

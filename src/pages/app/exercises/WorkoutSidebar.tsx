@@ -42,7 +42,7 @@ export default function WorkoutSidebar({
     resolver: zodResolver(FormSchema),
   });
 
-  const workout = trpc.workout.createOneWorkout.useMutation({
+  const workout = trpc.workout.create.useMutation({
     onSuccess: () => {
       toast.success("Workout created");
       setSelectedExercises([]);
@@ -59,13 +59,10 @@ export default function WorkoutSidebar({
     const connectExercises = selectedExercises.map((e) => ({
       id: e.id,
     }));
-    const workoutData = {
+    workout.mutate({
       ...data,
-      exercises: {
-        connect: connectExercises,
-      },
-    };
-    workout.mutate({ data: workoutData });
+      exercises: connectExercises,
+    });
   };
 
   return (

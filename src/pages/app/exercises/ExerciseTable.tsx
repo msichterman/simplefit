@@ -32,32 +32,14 @@ export default function ExerciseTable({
   const [searchInput, setSearchInput] = useState("");
   const [searchString, setSearchString] = useState("");
 
-  const exerciseWhereQuery = {
-    where: {
-      OR: [
-        {
-          name: {
-            search: searchString,
-          },
-        },
-        {
-          name: {
-            contains: searchString,
-          },
-        },
-      ],
-    },
-  };
-
-  const { data: count } = trpc.exercise.countExercise.useQuery({
-    ...(Boolean(searchString) ? exerciseWhereQuery : {}),
+  const { data: count } = trpc.exercise.count.useQuery({
+    searchString,
   });
-  const { data: exercises, isLoading } =
-    trpc.exercise.findManyExercise.useQuery({
-      take,
-      skip,
-      ...(Boolean(searchString) ? exerciseWhereQuery : {}),
-    });
+  const { data: exercises, isLoading } = trpc.exercise.list.useQuery({
+    take,
+    skip,
+    searchString,
+  });
 
   useEffect(() => {
     if (count !== undefined) {
@@ -109,7 +91,7 @@ export default function ExerciseTable({
       >
         <label
           htmlFor="default-search"
-          className="dark:text-zinc-50dark:text-zinc-50 sr-only mb-2 text-sm font-medium text-neutral-900 dark:text-zinc-100 dark:text-white"
+          className="dark:text-zinc-50dark:text-zinc-50 sr-only mb-2 text-sm font-medium text-neutral-900 dark:text-zinc-100"
         >
           Search
         </label>

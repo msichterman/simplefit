@@ -9,20 +9,8 @@ export default function WorkoutDetailPage() {
   const router = useRouter();
   const { id } = router.query;
   const workoutId = parseInt(id as string);
-  const { data, isLoading } = trpc.workout.findUniqueWorkout.useQuery({
-    include: {
-      exercises: true,
-      tags: true,
-      author: {
-        select: {
-          id: true,
-          name: true,
-        },
-      },
-    },
-    where: {
-      id: workoutId,
-    },
+  const { data, isLoading } = trpc.workout.read.useQuery({
+    id: workoutId,
   });
   const workout = data as WorkoutWithAuthor;
   return (

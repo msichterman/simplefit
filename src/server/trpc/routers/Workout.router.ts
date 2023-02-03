@@ -1,115 +1,145 @@
-import { router, protectedProcedure } from "./helpers/config";
-import { WorkoutFindUniqueSchema } from "../generated/schemas/findUniqueWorkout.schema";
-import { WorkoutFindFirstSchema } from "../generated/schemas/findFirstWorkout.schema";
-import { WorkoutFindManySchema } from "../generated/schemas/findManyWorkout.schema";
-import { WorkoutCreateOneSchema } from "../generated/schemas/createOneWorkout.schema";
-import { WorkoutCreateManySchema } from "../generated/schemas/createManyWorkout.schema";
-import { WorkoutDeleteOneSchema } from "../generated/schemas/deleteOneWorkout.schema";
-import { WorkoutUpdateOneSchema } from "../generated/schemas/updateOneWorkout.schema";
-import { WorkoutDeleteManySchema } from "../generated/schemas/deleteManyWorkout.schema";
-import { WorkoutUpdateManySchema } from "../generated/schemas/updateManyWorkout.schema";
-import { WorkoutUpsertSchema } from "../generated/schemas/upsertOneWorkout.schema";
-import { WorkoutAggregateSchema } from "../generated/schemas/aggregateWorkout.schema";
-import { WorkoutGroupBySchema } from "../generated/schemas/groupByWorkout.schema";
+import { StatusType, VisibilityType } from "@/types";
+import { z } from "zod";
+import { isAuthorOrSuperAdmin } from "../libs/prismaHelpers";
+import { router, protectedProcedure, publicProcedure } from "./helpers/config";
 
-export const workoutsRouter = router({
-  aggregateWorkout: protectedProcedure
-    .input(WorkoutAggregateSchema)
-    .query(async ({ ctx, input }) => {
-      const aggregateWorkout = await ctx.prisma.workout.aggregate(input);
-      return aggregateWorkout;
-    }),
-  createManyWorkout: protectedProcedure
-    .input(WorkoutCreateManySchema)
+const workoutNameSchema = z.string().min(2).max(100);
+const workoutDescriptionSchema = z.string().min(2).max(140);
+const workoutConnectExercisesSchema = z.array(z.object({ id: z.number() }));
+const workoutConnectTagsSchema = z.array(z.object({ id: z.number() }));
+const workoutIdSchema = z.number();
+
+export const workoutRouter = router({
+  create: protectedProcedure
+    .input(
+      z.object({
+        name: workoutNameSchema,
+        description: workoutDescriptionSchema.optional(),
+        exercises: workoutConnectExercisesSchema,
+        tags: workoutConnectTagsSchema.optional(),
+      })
+    )
     .mutation(async ({ ctx, input }) => {
-      const createManyWorkout = await ctx.prisma.workout.createMany(input);
-      return createManyWorkout;
-    }),
-  createOneWorkout: protectedProcedure
-    .input(WorkoutCreateOneSchema)
-    .mutation(async ({ ctx, input }) => {
-      const createOneWorkout = await ctx.prisma.workout.create({
+      const createdWorkout = await ctx.prisma.workout.create({
         data: {
-          name: input.data.name,
-          description: input.data.description,
+          name: input.name,
+          description: input.description,
           author: {
             connect: {
               id: ctx.session.user.id,
             },
           },
-          exercises: input.data.exercises,
-          tags: input.data.tags,
+          exercises: {
+            connect: input.exercises,
+          },
+          tags: {
+            connect: input.tags,
+          },
         },
       });
-      return createOneWorkout;
+      return createdWorkout;
     }),
-  deleteManyWorkout: protectedProcedure
-    .input(WorkoutDeleteManySchema)
+  read: publicProcedure
+    .input(
+      z.object({
+        id: workoutIdSchema,
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      return await ctx.prisma.workout.findUnique({
+        include: {
+          exercises: true,
+          tags: true,
+          author: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
+        },
+        where: {
+          id: input.id,
+          // Not private, or author's
+          OR: [
+            { visibility: { not: VisibilityType.PRIVATE } },
+            isAuthorOrSuperAdmin(ctx),
+          ],
+        },
+      });
+    }),
+  update: protectedProcedure
+    .input(
+      z
+        .object({
+          name: workoutNameSchema,
+          description: workoutDescriptionSchema,
+          visibility: z.enum([
+            VisibilityType.PUBLIC,
+            VisibilityType.UNLISTED,
+            VisibilityType.PRIVATE,
+          ]),
+          status: z.enum([StatusType.DRAFT, StatusType.PUBLISHED]),
+          exercises: workoutConnectExercisesSchema,
+          tags: workoutConnectTagsSchema.optional(),
+        })
+        .partial()
+        .extend({ id: workoutIdSchema })
+    )
     .mutation(async ({ ctx, input }) => {
-      const deleteManyWorkout = await ctx.prisma.workout.deleteMany(input);
-      return deleteManyWorkout;
+      const updatedWorkout = await ctx.prisma.workout.update({
+        where: {
+          id: input.id,
+          ...isAuthorOrSuperAdmin(ctx),
+        },
+        data: {
+          name: input.name,
+          description: input.description,
+          author: {
+            connect: {
+              id: ctx.session.user.id,
+            },
+          },
+          exercises: {
+            connect: input.exercises,
+          },
+          tags: {
+            connect: input.tags,
+          },
+        },
+      });
+      return updatedWorkout;
     }),
-  deleteOneWorkout: protectedProcedure
-    .input(WorkoutDeleteOneSchema)
+  list: publicProcedure.query(async ({ ctx }) => {
+    const listWorkouts = await ctx.prisma.workout.findMany({
+      where: {
+        OR: [{ visibility: VisibilityType.PUBLIC }, isAuthorOrSuperAdmin(ctx)],
+      },
+      include: {
+        exercises: true,
+        tags: true,
+        author: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+      orderBy: {
+        updatedAt: "desc",
+      },
+    });
+    return listWorkouts;
+  }),
+  delete: protectedProcedure
+    .input(
+      z.object({
+        id: workoutIdSchema,
+      })
+    )
     .mutation(async ({ ctx, input }) => {
-      const deleteOneWorkout = await ctx.prisma.workout.delete(input);
-      return deleteOneWorkout;
-    }),
-  findFirstWorkout: protectedProcedure
-    .input(WorkoutFindFirstSchema)
-    .query(async ({ ctx, input }) => {
-      const findFirstWorkout = await ctx.prisma.workout.findFirst(input);
-      return findFirstWorkout;
-    }),
-  findFirstWorkoutOrThrow: protectedProcedure
-    .input(WorkoutFindFirstSchema)
-    .query(async ({ ctx, input }) => {
-      const findFirstWorkoutOrThrow = await ctx.prisma.workout.findFirstOrThrow(
-        input
-      );
-      return findFirstWorkoutOrThrow;
-    }),
-  findManyWorkout: protectedProcedure
-    .input(WorkoutFindManySchema)
-    .query(async ({ ctx, input }) => {
-      const findManyWorkout = await ctx.prisma.workout.findMany(input);
-      return findManyWorkout;
-    }),
-  findUniqueWorkout: protectedProcedure
-    .input(WorkoutFindUniqueSchema)
-    .query(async ({ ctx, input }) => {
-      const findUniqueWorkout = await ctx.prisma.workout.findUnique(input);
-      return findUniqueWorkout;
-    }),
-  findUniqueWorkoutOrThrow: protectedProcedure
-    .input(WorkoutFindUniqueSchema)
-    .query(async ({ ctx, input }) => {
-      const findUniqueWorkoutOrThrow =
-        await ctx.prisma.workout.findUniqueOrThrow(input);
-      return findUniqueWorkoutOrThrow;
-    }),
-  groupByWorkout: protectedProcedure
-    .input(WorkoutGroupBySchema)
-    .query(async ({ ctx, input }) => {
-      const groupByWorkout = await ctx.prisma.workout.groupBy(input);
-      return groupByWorkout;
-    }),
-  updateManyWorkout: protectedProcedure
-    .input(WorkoutUpdateManySchema)
-    .mutation(async ({ ctx, input }) => {
-      const updateManyWorkout = await ctx.prisma.workout.updateMany(input);
-      return updateManyWorkout;
-    }),
-  updateOneWorkout: protectedProcedure
-    .input(WorkoutUpdateOneSchema)
-    .mutation(async ({ ctx, input }) => {
-      const updateOneWorkout = await ctx.prisma.workout.update(input);
-      return updateOneWorkout;
-    }),
-  upsertOneWorkout: protectedProcedure
-    .input(WorkoutUpsertSchema)
-    .mutation(async ({ ctx, input }) => {
-      const upsertOneWorkout = await ctx.prisma.workout.upsert(input);
-      return upsertOneWorkout;
+      const deletedWorkout = await ctx.prisma.workout.delete({
+        where: { id: input.id, ...isAuthorOrSuperAdmin(ctx) },
+      });
+      return deletedWorkout;
     }),
 });

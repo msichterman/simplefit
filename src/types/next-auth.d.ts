@@ -11,5 +11,7 @@ declare module "next-auth" {
       username: string;
       role: RoleType;
     } & DefaultSession["user"];
+    isUserAdmin?: boolean;
+    isUserSuperAdmin?: boolean;
   }
 }
