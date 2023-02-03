@@ -11,10 +11,10 @@ datasource db {
   relationMode = "prisma"
 }
 
-generator erd {
-  provider = "prisma-erd-generator"
-  theme    = "neutral"
-}
+// generator erd {
+//   provider = "prisma-erd-generator"
+//   theme    = "neutral"
+// }
 
 // Necessary for Next auth
 model Account {
