@@ -1,4 +1,4 @@
-import type { Exercise } from "@prisma/client";
+import type { Prisma } from "@prisma/client";
 import { XCircleIcon } from "@heroicons/react/20/solid";
 import type { Dispatch, SetStateAction } from "react";
 
