@@ -8,6 +8,12 @@ const workoutDescriptionSchema = z.string().min(2).max(140);
 const workoutConnectExercisesSchema = z.array(z.object({ id: z.number() }));
 const workoutConnectTagsSchema = z.array(z.object({ id: z.number() }));
 const workoutIdSchema = z.number();
+const workoutSlugSchema = z.string();
+const workoutVisibilitySchema = z.union([
+  z.literal(VisibilityType.PUBLIC),
+  z.literal(VisibilityType.PRIVATE),
+  z.literal(VisibilityType.UNLISTED),
+]);
 
 export const workoutRouter = router({
   create: protectedProcedure
@@ -17,6 +23,8 @@ export const workoutRouter = router({
         description: workoutDescriptionSchema.optional(),
         exercises: workoutConnectExercisesSchema,
         tags: workoutConnectTagsSchema.optional(),
+        visibility: workoutVisibilitySchema,
+        slug: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -24,6 +32,8 @@ export const workoutRouter = router({
         data: {
           name: input.name,
           description: input.description,
+          visibility: input.visibility,
+          slug: input.slug,
           author: {
             connect: {
               id: ctx.session.user.id,
@@ -59,6 +69,34 @@ export const workoutRouter = router({
         },
         where: {
           id: input.id,
+          // Not private, or author's
+          OR: [
+            { visibility: { not: VisibilityType.PRIVATE } },
+            isAuthorOrSuperAdmin(ctx),
+          ],
+        },
+      });
+    }),
+  getBySlug: publicProcedure
+    .input(
+      z.object({
+        slug: workoutSlugSchema,
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      return await ctx.prisma.workout.findUnique({
+        include: {
+          exercises: true,
+          tags: true,
+          author: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
+        },
+        where: {
+          slug: input.slug,
           // Not private, or author's
           OR: [
             { visibility: { not: VisibilityType.PRIVATE } },
@@ -109,10 +147,13 @@ export const workoutRouter = router({
       });
       return updatedWorkout;
     }),
-  list: publicProcedure.query(async ({ ctx }) => {
+  listFeed: publicProcedure.query(async ({ ctx }) => {
     const listWorkouts = await ctx.prisma.workout.findMany({
       where: {
         OR: [{ visibility: VisibilityType.PUBLIC }, isAuthorOrSuperAdmin(ctx)],
+        status: {
+          equals: StatusType.PUBLISHED,
+        },
       },
       include: {
         exercises: true,

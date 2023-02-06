@@ -112,7 +112,7 @@ const Header = ({ isWide = false }) => {
 
   return (
     <Popover
-      className="sticky top-0 z-50 bg-zinc-50/90 shadow backdrop-blur dark:bg-zinc-900/90"
+      className="sticky top-0 z-50 bg-neutral-50/90 shadow backdrop-blur dark:bg-neutral-900/90"
       as="nav"
       aria-label="Main"
     >
@@ -137,7 +137,7 @@ const Header = ({ isWide = false }) => {
           </div>
           <div className="-my-2 -mr-2 md:hidden">
             <Popover.Button
-              className="inline-flex items-center justify-center rounded-md bg-zinc-50 p-2 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-600 dark:bg-zinc-900/80 dark:text-caramel-200"
+              className="inline-flex items-center justify-center rounded-md bg-neutral-50 p-2 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-600 dark:bg-neutral-900/80 dark:text-caramel-200"
               role="menuitem"
             >
               <span className="sr-only">Open menu</span>
@@ -153,24 +153,24 @@ const Header = ({ isWide = false }) => {
           >
             <NavLink
               href="/about"
-              className="flex items-center text-base font-medium text-zinc-500 hover:text-zinc-900 dark:text-caramel-200 dark:hover:text-caramel-400"
-              activeClassName="dark:text-caramel-400 text-zinc-800"
+              className="flex items-center text-base font-medium text-neutral-500 hover:text-neutral-900 dark:text-caramel-200 dark:hover:text-caramel-400"
+              activeClassName="dark:text-caramel-400 text-neutral-800"
               role="menuitem"
             >
               About
             </NavLink>
             <NavLink
               href="/pricing"
-              className="flex items-center text-base font-medium text-zinc-500 hover:text-zinc-900 dark:text-caramel-200 dark:hover:text-caramel-400"
-              activeClassName="dark:text-caramel-400 text-zinc-800"
+              className="flex items-center text-base font-medium text-neutral-500 hover:text-neutral-900 dark:text-caramel-200 dark:hover:text-caramel-400"
+              activeClassName="dark:text-caramel-400 text-neutral-800"
               role="menuitem"
             >
               Pricing
             </NavLink>
             <NavLink
               href="/contact"
-              className="flex items-center text-base font-medium text-zinc-500 hover:text-zinc-900 dark:text-caramel-200 dark:hover:text-caramel-400"
-              activeClassName="dark:text-caramel-400 text-zinc-800"
+              className="flex items-center text-base font-medium text-neutral-500 hover:text-neutral-900 dark:text-caramel-200 dark:hover:text-caramel-400"
+              activeClassName="dark:text-caramel-400 text-neutral-800"
               role="menuitem"
             >
               Contact
@@ -206,7 +206,7 @@ const Header = ({ isWide = false }) => {
           aria-orientation="vertical"
           role="menu"
         >
-          <div className="divide-y-2 divide-zinc-50 rounded-lg bg-zinc-50 shadow-lg ring-1 ring-black ring-opacity-5 dark:divide-zinc-800 dark:bg-zinc-900">
+          <div className="divide-y-2 divide-neutral-50 rounded-lg bg-neutral-50 shadow-lg ring-1 ring-black ring-opacity-5 dark:divide-neutral-800 dark:bg-neutral-900">
             <div className="px-5 pt-5 pb-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -214,7 +214,7 @@ const Header = ({ isWide = false }) => {
                 </div>
                 <div className="-mr-2">
                   <Popover.Button
-                    className="inline-flex items-center justify-center rounded-md bg-zinc-50 p-2 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-600 dark:bg-zinc-900/80 dark:text-caramel-200"
+                    className="inline-flex items-center justify-center rounded-md bg-neutral-50 p-2 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-600 dark:bg-neutral-900/80 dark:text-caramel-200"
                     role="menuitem"
                   >
                     <span className="sr-only">Close menu</span>
@@ -226,12 +226,12 @@ const Header = ({ isWide = false }) => {
                 <nav className="grid gap-y-8" aria-label="Main mobile">
                   {links.map((item) => (
                     <Link key={item.title} href={item.to} role="menuitem">
-                      <span className="-m-3 flex items-center rounded-md p-3 hover:bg-zinc-50 dark:bg-zinc-900/80">
+                      <span className="-m-3 flex items-center rounded-md p-3 hover:bg-neutral-50 dark:bg-neutral-900/80">
                         <item.icon
                           className="h-6 w-6 flex-shrink-0 text-amber-600"
                           aria-hidden="true"
                         />
-                        <span className="ml-3 text-base font-medium text-zinc-900  dark:text-caramel-100">
+                        <span className="ml-3 text-base font-medium text-neutral-900  dark:text-caramel-100">
                           {item.title}
                         </span>
                       </span>

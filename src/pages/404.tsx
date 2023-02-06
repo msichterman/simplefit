@@ -26,11 +26,11 @@ const Error: NextPage = () => {
                     404
                   </p>
                   <div className="sm:ml-6">
-                    <div className="sm:border-l sm:border-gray-200 sm:pl-6">
-                      <h1 className="dark:text-zinc-50dark:text-zinc-50 text-4xl font-bold tracking-tight text-gray-900 dark:text-zinc-50 sm:text-5xl">
+                    <div className="sm:border-l sm:border-neutral-200 sm:pl-6">
+                      <h1 className="dark:text-neutral-50dark:text-neutral-50 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-5xl">
                         Page not found
                       </h1>
-                      <p className="mt-1 text-base text-gray-500 dark:text-gray-300">
+                      <p className="mt-1 text-base text-neutral-500 dark:text-neutral-300">
                         Please check the URL in the address bar and try again.
                       </p>
                     </div>

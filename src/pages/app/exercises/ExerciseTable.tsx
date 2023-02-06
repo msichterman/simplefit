@@ -6,15 +6,28 @@ import {
   ChevronRightIcon,
   ArrowTopRightOnSquareIcon,
   XCircleIcon,
+  PlusIcon,
+  MinusIcon,
 } from "@heroicons/react/20/solid";
+import { Disclosure } from "@headlessui/react";
+import type { Prisma } from "@prisma/client";
 import { type Exercise } from "@prisma/client";
 import ExternalLink from "../../../components/ExternalLink";
 import { trpc } from "@/libs/utils/trpc";
 import FullBleedSpinner from "@/components/utils/FullBleedSpinner";
+import toast from "react-hot-toast";
 
 type ExerciseTableProps = {
-  selectedExercises: Exercise[];
-  setSelectedExercises: Dispatch<SetStateAction<Exercise[]>>;
+  selectedExercises: Prisma.ExerciseGetPayload<{
+    include: { tags: true };
+  }>[];
+  setSelectedExercises: Dispatch<
+    SetStateAction<
+      Prisma.ExerciseGetPayload<{
+        include: { tags: true };
+      }>[]
+    >
+  >;
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
 };
 
@@ -46,7 +59,49 @@ export default function ExerciseTable({
       const pages = Math.ceil(count / take);
       setPageCount(pages);
     }
-  }, [count, take]);
+
+    if (selectedExercises.length > 0) {
+      toast.custom(
+        <Disclosure defaultOpen={true}>
+          {({ open }) => (
+            <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-neutral-300/80 shadow-lg ring-1 ring-black ring-opacity-5">
+              <Disclosure.Button className="flex w-full items-center justify-between space-x-8 p-4">
+                <p className="text-sm font-medium text-neutral-900">
+                  {`${selectedExercises.length} exercises selected`}
+                </p>
+                {open ? (
+                  <MinusIcon className="h-4 w-4" />
+                ) : (
+                  <PlusIcon className="h-4 w-4" />
+                )}
+              </Disclosure.Button>
+              <Disclosure.Panel className="flex justify-between space-x-8 bg-neutral-100 p-4">
+                <p className="mt-1 text-xxs text-neutral-700">
+                  Continue adding exercises, and create a workout when
+                  you&apos;re ready!
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSidebarOpen(true)}
+                  className="inline-flex min-w-fit items-center rounded-md border border-transparent bg-amber-600 px-1 py-2 text-xs font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+                >
+                  Create workout
+                </button>
+              </Disclosure.Panel>
+            </div>
+          )}
+        </Disclosure>,
+        {
+          id: "selected-workouts",
+          position: "bottom-center",
+          duration: Infinity,
+        }
+      );
+    }
+    return () => {
+      toast.remove("selected-workouts");
+    };
+  }, [count, take, selectedExercises, setSidebarOpen]);
 
   function toggleAll() {
     setSelectedExercises(
@@ -60,7 +115,7 @@ export default function ExerciseTable({
     <div className="min-h-screen">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <p className="mt-2 text-sm text-neutral-700 dark:text-zinc-200">
+          <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-200">
             Browse our library of exercises, complete with set, rep, and rest
             suggestions as well as a links to see examples.
           </p>
@@ -91,7 +146,7 @@ export default function ExerciseTable({
       >
         <label
           htmlFor="default-search"
-          className="dark:text-zinc-50dark:text-zinc-50 sr-only mb-2 text-sm font-medium text-neutral-900 dark:text-zinc-100"
+          className="dark:text-neutral-50dark:text-neutral-50 sr-only mb-2 text-sm font-medium text-neutral-900 dark:text-neutral-100"
         >
           Search
         </label>
@@ -116,7 +171,7 @@ export default function ExerciseTable({
           <input
             type="search"
             id="default-search"
-            className="dark:text-zinc-50focus:border-amber-500 block w-full rounded-lg border border-neutral-300 bg-zinc-50 p-4 pl-10 text-[16px] text-neutral-900 focus:ring-amber-500 dark:border-neutral-900 dark:bg-neutral-700 dark:text-zinc-50 dark:placeholder-neutral-400 dark:focus:border-amber-500 dark:focus:ring-amber-500"
+            className="dark:text-neutral-50focus:border-amber-500 block w-full rounded-lg border border-neutral-300 bg-neutral-50 p-4 pl-10 text-[16px] text-neutral-900 focus:ring-amber-500 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-50 dark:placeholder-neutral-400 dark:focus:border-amber-500 dark:focus:ring-amber-500"
             placeholder="Search exercises..."
             value={searchInput}
             onChange={(e) => {
@@ -149,19 +204,8 @@ export default function ExerciseTable({
         <div className="-my-2 -mx-4 min-w-full overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-h-full min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="relative min-h-full overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-              {selectedExercises?.length > 0 && (
-                <div className="absolute left-12 top-2 z-20 flex h-12 items-center space-x-3 rounded-md bg-amber-600 px-2 sm:left-16">
-                  <span className="px-2 align-middle text-xxs leading-tight text-amber-50">{`${selectedExercises?.length} exercises selected`}</span>
-                  <button
-                    onClick={() => setSidebarOpen(true)}
-                    className="inline-flex items-center rounded border border-neutral-300 bg-zinc-50 px-2.5 py-1.5 text-xs font-medium text-neutral-700 shadow-sm hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-900 dark:bg-neutral-700 dark:text-zinc-100"
-                  >
-                    Create workout...
-                  </button>
-                </div>
-              )}
               <table className="min-h-96 min-w-full table-fixed divide-y divide-neutral-300 dark:divide-neutral-900">
-                <thead className="relative z-10 h-16 bg-zinc-200/60 backdrop-blur-sm dark:bg-neutral-900/60 ">
+                <thead className="relative z-10 h-16 bg-neutral-200/60 backdrop-blur-sm dark:bg-neutral-900/60 ">
                   <tr>
                     <th
                       scope="col"
@@ -177,37 +221,37 @@ export default function ExerciseTable({
                     </th>
                     <th
                       scope="col"
-                      className="relative z-10 min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
+                      className="relative z-10 min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-neutral-900 dark:text-neutral-100 "
                     >
                       Name
                     </th>
                     <th
                       scope="col"
-                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-neutral-100 "
                     >
                       Difficulty
                     </th>
                     <th
                       scope="col"
-                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-neutral-100 "
                     >
                       Sets
                     </th>
                     <th
                       scope="col"
-                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-neutral-100 "
                     >
                       Reps
                     </th>
                     <th
                       scope="col"
-                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-neutral-100 "
                     >
                       Rest
                     </th>
                     <th
                       scope="col"
-                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-zinc-100 "
+                      className="relative z-10 px-3 py-3.5 text-left text-sm font-semibold text-neutral-900 dark:text-neutral-100 "
                     >
                       Example
                     </th>
@@ -220,76 +264,83 @@ export default function ExerciseTable({
                   </tr>
                 </thead>
                 <tbody className="w-full divide-y divide-neutral-200 dark:divide-neutral-800">
-                  {exercises?.map((exercise: Exercise) => (
-                    <tr
-                      key={exercise.id}
-                      className={
-                        selectedExercises.some((e) => e.id === exercise.id)
-                          ? "bg-zinc-100 dark:bg-neutral-900"
-                          : "bg-zinc-50 dark:bg-neutral-700"
-                      }
-                    >
-                      <td className="relative w-12 px-6 sm:w-16 sm:px-8">
-                        {selectedExercises.some(
-                          (e) => e.id === exercise.id
-                        ) && (
-                          <div className="absolute inset-y-0 left-0 w-0.5 bg-amber-600" />
-                        )}
-                        <input
-                          type="checkbox"
-                          className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-neutral-300 text-amber-600 focus:ring-amber-500 dark:border-neutral-900 sm:left-6"
-                          value={exercise.id}
-                          checked={selectedExercises.some(
-                            (e) => e.id === exercise.id
-                          )}
-                          onChange={(e) =>
-                            setSelectedExercises(
-                              e.target.checked
-                                ? [...selectedExercises, exercise]
-                                : selectedExercises.filter(
-                                    (e) => e.id !== exercise.id
-                                  )
-                            )
-                          }
-                        />
-                      </td>
-                      <td
-                        className={clsx(
-                          "whitespace-nowrap py-4 pr-3 text-sm font-medium capitalize",
+                  {exercises?.map(
+                    (
+                      exercise: Prisma.ExerciseGetPayload<{
+                        include: { tags: true };
+                      }>
+                    ) => (
+                      <tr
+                        key={exercise.id}
+                        className={
                           selectedExercises.some((e) => e.id === exercise.id)
-                            ? "text-amber-600"
-                            : "text-neutral-900 dark:text-zinc-100"
-                        )}
+                            ? "bg-neutral-100 dark:bg-neutral-900"
+                            : "bg-neutral-50 dark:bg-neutral-700"
+                        }
                       >
-                        {exercise.name}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm capitalize text-neutral-500 dark:text-neutral-300">
-                        {exercise.difficulty}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-neutral-500 dark:text-neutral-300">
-                        {exercise.sets}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-neutral-500 dark:text-neutral-300">
-                        {exercise.reps}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-neutral-500 dark:text-neutral-300">
-                        {`${exercise.rest} sec`}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-neutral-500 dark:text-neutral-300">
-                        <ExternalLink href={exercise.exampleLink}>
-                          <ArrowTopRightOnSquareIcon className="h-5 w-5" />
-                        </ExternalLink>
-                      </td>
-                      <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a
-                          href="#"
-                          className="text-amber-600 hover:text-amber-900"
+                        <td className="relative w-12 px-6 sm:w-16 sm:px-8">
+                          {selectedExercises.some(
+                            (e) => e.id === exercise.id
+                          ) && (
+                            <div className="absolute inset-y-0 left-0 w-0.5 bg-amber-600" />
+                          )}
+                          <input
+                            type="checkbox"
+                            className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-neutral-300 text-amber-600 focus:ring-amber-500 dark:border-neutral-900 sm:left-6"
+                            value={exercise.id}
+                            checked={selectedExercises.some(
+                              (e) => e.id === exercise.id
+                            )}
+                            onChange={(e) =>
+                              setSelectedExercises(
+                                e.target.checked
+                                  ? [...selectedExercises, exercise]
+                                  : selectedExercises.filter(
+                                      (e) => e.id !== exercise.id
+                                    )
+                              )
+                            }
+                          />
+                        </td>
+                        <td
+                          className={clsx(
+                            "whitespace-nowrap py-4 pr-3 text-sm font-medium capitalize",
+                            selectedExercises.some((e) => e.id === exercise.id)
+                              ? "text-amber-600"
+                              : "text-neutral-900 dark:text-neutral-100"
+                          )}
                         >
-                          Edit<span className="sr-only">, {exercise.name}</span>
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
+                          {exercise.name}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm capitalize text-neutral-500 dark:text-neutral-300">
+                          {exercise.difficulty}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-neutral-500 dark:text-neutral-300">
+                          {exercise.sets}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-neutral-500 dark:text-neutral-300">
+                          {exercise.reps}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-neutral-500 dark:text-neutral-300">
+                          {`${exercise.rest} sec`}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-neutral-500 dark:text-neutral-300">
+                          <ExternalLink href={exercise.exampleLink}>
+                            <ArrowTopRightOnSquareIcon className="h-5 w-5" />
+                          </ExternalLink>
+                        </td>
+                        <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                          <a
+                            href="#"
+                            className="text-amber-600 hover:text-amber-900"
+                          >
+                            Edit
+                            <span className="sr-only">, {exercise.name}</span>
+                          </a>
+                        </td>
+                      </tr>
+                    )
+                  )}
                 </tbody>
               </table>
             </div>
@@ -302,46 +353,46 @@ export default function ExerciseTable({
         </div>
       )}
       {count !== undefined && pageCount !== null && (
-        <div className="-mx-4 mt-2 flex items-center justify-between border-t border-neutral-200 bg-zinc-50 px-4 py-3 dark:border-neutral-900 dark:bg-neutral-900 sm:-mx-6 sm:px-6 md:mx-0">
+        <div className="-mx-4 mt-2 flex items-center justify-between border-t border-neutral-200 bg-neutral-50 px-4 py-3 dark:border-neutral-900 dark:bg-neutral-900 sm:-mx-6 sm:px-6 md:mx-0">
           <div className="flex flex-1 justify-between sm:hidden">
             <button
               onClick={() => setSkip((s) => (s >= take ? s - take : s))}
-              className="relative inline-flex items-center rounded-md border border-neutral-300 bg-zinc-50 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-zinc-50 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-50"
+              className="relative inline-flex items-center rounded-md border border-neutral-300 bg-neutral-50 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-50"
             >
               Previous
             </button>
             {count === 0 ? (
-              <span className="text-sm text-neutral-700 dark:text-zinc-50">
+              <span className="text-sm text-neutral-700 dark:text-neutral-50">
                 No exercises found
               </span>
             ) : (
               <div>
-                <p className="text-center text-sm text-neutral-700 dark:text-zinc-50">
+                <p className="text-center text-sm text-neutral-700 dark:text-neutral-50">
                   Showing <span className="font-medium">{skip + 1}</span> to{" "}
                   <span className="font-medium">
                     {Math.min(skip + take, count)}
                   </span>
                 </p>
-                <p className="text-center text-xxs text-neutral-700 dark:text-zinc-50">
+                <p className="text-center text-xxs text-neutral-700 dark:text-neutral-50">
                   of <span className="font-medium">{count}</span> results
                 </p>
               </div>
             )}
             <button
               onClick={() => setSkip((s) => (s + take <= count ? s + take : s))}
-              className="relative ml-3 inline-flex items-center rounded-md border border-neutral-300 bg-zinc-50 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-zinc-50 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-50"
+              className="relative ml-3 inline-flex items-center rounded-md border border-neutral-300 bg-neutral-50 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-50"
             >
               Next
             </button>
           </div>
           <div className="hidden w-full sm:flex sm:flex-1 sm:items-center sm:justify-between">
             {count === 0 ? (
-              <span className="text-sm text-neutral-700 dark:text-zinc-50">
+              <span className="text-sm text-neutral-700 dark:text-neutral-50">
                 No exercises found
               </span>
             ) : (
               <div>
-                <p className="text-sm text-neutral-700 dark:text-zinc-50">
+                <p className="text-sm text-neutral-700 dark:text-neutral-50">
                   Showing <span className="font-medium">{skip + 1}</span> to{" "}
                   <span className="font-medium">
                     {Math.min(skip + take, count)}
@@ -357,12 +408,12 @@ export default function ExerciseTable({
               >
                 <button
                   onClick={() => setSkip((s) => (s >= take ? s - take : s))}
-                  className="relative inline-flex items-center rounded-l-md border border-neutral-300 bg-zinc-50 px-2 py-2 text-sm font-medium text-neutral-500 hover:bg-zinc-50 focus:z-20 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200"
+                  className="relative inline-flex items-center rounded-l-md border border-neutral-300 bg-neutral-50 px-2 py-2 text-sm font-medium text-neutral-500 hover:bg-neutral-50 focus:z-20 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200"
                 >
                   <span className="sr-only">Previous</span>
                   <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
                 </button>
-                {/* Current: "z-10 bg-amber-50 border-amber-500 text-amber-600", Default: "bg-zinc-50 border-neutral-300 dark:border-neutral-900 text-neutral-500 dark:text-neutral-300 hover:bg-zinc-50 dark:bg-neutral-700" */}
+                {/* Current: "z-10 bg-amber-50 border-amber-500 text-amber-600", Default: "bg-neutral-50 border-neutral-300 dark:border-neutral-900 text-neutral-500 dark:text-neutral-300 hover:bg-neutral-50 dark:bg-neutral-700" */}
 
                 {[...Array(pageCount).keys()].map((num) => {
                   const pageNum = num + 1;
@@ -375,7 +426,7 @@ export default function ExerciseTable({
                     return (
                       <span
                         key={num + 1}
-                        className="relative inline-flex items-center border border-neutral-300 bg-zinc-50 px-4 py-2 text-sm font-medium text-neutral-700 dark:border-neutral-900"
+                        className="relative inline-flex items-center border border-neutral-300 bg-neutral-50 px-4 py-2 text-sm font-medium text-neutral-700 dark:border-neutral-900"
                       >
                         ...
                       </span>
@@ -400,7 +451,7 @@ export default function ExerciseTable({
                         className={clsx(
                           isCurrent
                             ? "z-10 border-amber-500 bg-amber-50 text-amber-600"
-                            : "border-neutral-300 bg-zinc-50 text-neutral-500 hover:bg-zinc-50 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200",
+                            : "border-neutral-300 bg-neutral-50 text-neutral-500 hover:bg-neutral-50 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200",
                           "relative z-10 inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20"
                         )}
                       >
@@ -415,7 +466,7 @@ export default function ExerciseTable({
                   onClick={() =>
                     setSkip((s) => (s + take <= count ? s + take : s))
                   }
-                  className="relative inline-flex items-center rounded-r-md border border-neutral-300 bg-zinc-50 px-2 py-2 text-sm font-medium text-neutral-500 hover:bg-zinc-50 focus:z-20 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200"
+                  className="relative inline-flex items-center rounded-r-md border border-neutral-300 bg-neutral-50 px-2 py-2 text-sm font-medium text-neutral-500 hover:bg-neutral-50 focus:z-20 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-200"
                 >
                   <span className="sr-only">Next</span>
                   <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />

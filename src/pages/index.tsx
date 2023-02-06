@@ -51,7 +51,7 @@ const Home: NextPage = () => {
                   </span>
                 </div>
                 <div className="mt-6 space-y-8">
-                  <h1 className="text-3xl font-bold text-zinc-900  dark:text-caramel-100 lg:text-4xl lg:font-extrabold xl:text-5xl">
+                  <h1 className="text-3xl font-bold text-neutral-900  dark:text-caramel-100 lg:text-4xl lg:font-extrabold xl:text-5xl">
                     Simple, tailored workouts at your fingertips.
                   </h1>
                   <p className="mt-6 text-xl dark:text-caramel-200">
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
                     Start living healthier today!
                   </p>
                   <Link
-                    className="block w-full rounded-md border border-transparent bg-amber-600 px-5 py-3 text-center text-base font-medium text-zinc-50 shadow hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-2 sm:max-w-fit sm:px-10"
+                    className="block w-full rounded-md border border-transparent bg-amber-600 px-5 py-3 text-center text-base font-medium text-neutral-50 shadow hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-2 sm:max-w-fit sm:px-10"
                     href="/app/sign-up"
                   >
                     Let&apos;s get started
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
           <div className="hidden sm:mx-auto sm:max-w-3xl sm:px-6 lg:block">
             <div className="pt-12 sm:relative sm:mt-12 sm:pt-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
               <div>
-                <div className="absolute inset-y-0 left-1/2 w-screen rounded-l-3xl bg-zinc-50 dark:bg-zinc-900/50 lg:left-80 lg:right-0 lg:w-full" />
+                <div className="absolute inset-y-0 left-1/2 w-screen rounded-l-3xl bg-neutral-50 dark:bg-neutral-900/50 lg:left-80 lg:right-0 lg:w-full" />
                 <svg
                   className="absolute top-8 right-1/2 -mr-3 lg:left-0 lg:m-0"
                   width={404}
@@ -94,7 +94,7 @@ const Home: NextPage = () => {
                         y={0}
                         width={4}
                         height={4}
-                        className="text-zinc-200"
+                        className="text-neutral-200"
                         fill="currentColor"
                       />
                     </pattern>
@@ -121,7 +121,7 @@ const Home: NextPage = () => {
                 aria-hidden="true"
                 className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
               >
-                <div className="absolute inset-y-0 right-1/2 w-full rounded-r-3xl bg-zinc-50 dark:bg-zinc-900/50 lg:right-72" />
+                <div className="absolute inset-y-0 right-1/2 w-full rounded-r-3xl bg-neutral-50 dark:bg-neutral-900/50 lg:right-72" />
                 <svg
                   className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
                   width={404}
@@ -143,7 +143,7 @@ const Home: NextPage = () => {
                         y={0}
                         width={4}
                         height={4}
-                        className="text-zinc-200"
+                        className="text-neutral-200"
                         fill="currentColor"
                       />
                     </pattern>
@@ -167,9 +167,9 @@ const Home: NextPage = () => {
                   />
                   <div className="absolute inset-0 bg-amber-600 mix-blend-multiply" />
                   <div className="bg-gradient-to-t absolute inset-0 from-amber-700 via-amber-700 opacity-50" />
-                  <div className="relative bg-zinc-900/50 px-8 py-5 backdrop-blur-sm">
+                  <div className="relative bg-neutral-900/50 px-8 py-5 backdrop-blur-sm">
                     <blockquote className="mt-8">
-                      <div className="relative text-base font-medium text-zinc-50 md:flex-grow">
+                      <div className="relative text-base font-medium text-neutral-50 md:flex-grow">
                         <svg
                           className="absolute top-0 left-0 h-8 w-8 -translate-x-3 -translate-y-2 transform text-amber-700"
                           fill="currentColor"
@@ -204,11 +204,11 @@ const Home: NextPage = () => {
             <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
               {/* Content area */}
               <div className="pt-12 sm:pt-16 lg:pt-20">
-                <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900  dark:text-caramel-100 sm:text-4xl">
+                <h2 className="text-3xl font-extrabold tracking-tight text-neutral-900  dark:text-caramel-100 sm:text-4xl">
                   Your one-stop destination for personalized workouts powered by
                   AI!
                 </h2>
-                <div className="leading-7prose-zinc prose mt-6 space-y-6 text-base dark:prose-invert">
+                <div className="leading-7prose-neutral prose mt-6 space-y-6 text-base dark:prose-invert">
                   <p>
                     With Simple Fit, you can browse a wide range of workouts
                     tailored to your specific needs. Whether you&apos;re looking
@@ -250,7 +250,7 @@ const Home: NextPage = () => {
         {/* CTA section */}
         <div className="relative mt-24 sm:mt-32 sm:py-16">
           <div aria-hidden="true" className="hidden sm:block">
-            <div className="absolute inset-y-0 left-0 w-1/2 rounded-r-3xl bg-zinc-50 dark:bg-zinc-900/50" />
+            <div className="absolute inset-y-0 left-0 w-1/2 rounded-r-3xl bg-neutral-50 dark:bg-neutral-900/50" />
             <svg
               className="absolute top-8 left-1/2 -ml-3"
               width={404}
@@ -272,7 +272,7 @@ const Home: NextPage = () => {
                     y={0}
                     width={4}
                     height={4}
-                    className="text-zinc-200"
+                    className="text-neutral-200"
                     fill="currentColor"
                   />
                 </pattern>
@@ -311,7 +311,7 @@ const Home: NextPage = () => {
               </div>
               <div className="relative">
                 <div className="sm:text-center">
-                  <h2 className="text-2xl font-extrabold tracking-tight text-zinc-50 sm:text-3xl">
+                  <h2 className="text-2xl font-extrabold tracking-tight text-neutral-50 sm:text-3xl">
                     Sign up for our newsletter today!
                   </h2>
                   <p className="mx-auto mt-6 max-w-2xl text-lg text-amber-100">
@@ -347,7 +347,7 @@ const Home: NextPage = () => {
                     <div className="mt-4 sm:mt-0 sm:ml-3">
                       <button
                         type="submit"
-                        className="block w-full rounded-md border border-transparent bg-zinc-900 px-5 py-3 text-base font-medium text-zinc-50 shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-zinc-50 focus:ring-offset-2 focus:ring-offset-amber-600 sm:px-10"
+                        className="block w-full rounded-md border border-transparent bg-neutral-900 px-5 py-3 text-base font-medium text-neutral-50 shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-neutral-50 focus:ring-offset-2 focus:ring-offset-amber-600 sm:px-10"
                       >
                         Subscribe
                       </button>

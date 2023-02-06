@@ -41,7 +41,7 @@ const Terms: NextPage = () => {
                         y={0}
                         width={4}
                         height={4}
-                        className="fill-gray-200 dark:fill-zinc-900"
+                        className="fill-neutral-200 dark:fill-neutral-900"
                       />
                     </pattern>
                   </defs>
@@ -72,7 +72,7 @@ const Terms: NextPage = () => {
                         y={0}
                         width={4}
                         height={4}
-                        className="fill-gray-200 dark:fill-zinc-900"
+                        className="fill-neutral-200 dark:fill-neutral-900"
                       />
                     </pattern>
                   </defs>
@@ -103,7 +103,7 @@ const Terms: NextPage = () => {
                         y={0}
                         width={4}
                         height={4}
-                        className="fill-gray-200 dark:fill-zinc-900"
+                        className="fill-neutral-200 dark:fill-neutral-900"
                       />
                     </pattern>
                   </defs>
@@ -121,12 +121,12 @@ const Terms: NextPage = () => {
                   <span className="block text-center text-lg font-semibold text-amber-600 dark:text-amber-500">
                     Legal
                   </span>
-                  <span className="dark:text-zinc-50dark:text-zinc-50 mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 dark:text-zinc-50 sm:text-4xl">
+                  <span className="dark:text-neutral-50dark:text-neutral-50 mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-4xl">
                     Terms of Service
                   </span>
                 </h1>
               </div>
-              <div className="prose-base prose-zinc prose mx-auto mt-6 dark:prose-invert">
+              <div className="prose-base prose-neutral prose mx-auto mt-6 dark:prose-invert">
                 <p>
                   This Terms of Service Agreement (“Agreement”), along with our
                   Company Privacy Policy{" "}

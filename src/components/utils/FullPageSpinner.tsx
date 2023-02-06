@@ -5,7 +5,7 @@ function FullPageSpinner() {
         <div role="status" className="mx-auto">
           <svg
             aria-hidden="true"
-            className="mr-2 h-8 w-8 animate-spin fill-amber-400 text-zinc-200 dark:text-zinc-600"
+            className="mr-2 h-8 w-8 animate-spin fill-amber-400 text-neutral-200 dark:text-neutral-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

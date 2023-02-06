@@ -1,17 +1,25 @@
 import FullPageSpinner from "@/components/utils/FullPageSpinner";
 import AppLayout from "@/layouts/AppLayout";
+import { getBaseUrl } from "@/libs/utils/helpers";
 import { trpc } from "@/libs/utils/trpc";
+import { LinkIcon, QuestionMarkCircleIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 import ExerciseTableCondensed from "../exercises/ExerciseTableCondensed";
 import type { WorkoutWithAuthor } from "./WorkoutList";
 
 export default function WorkoutDetailPage() {
   const router = useRouter();
-  const { id } = router.query;
-  const workoutId = parseInt(id as string);
-  const { data, isLoading } = trpc.workout.read.useQuery({
-    id: workoutId,
-  });
+  const { slug } = router.query;
+  const workoutIdString = slug as string;
+  const workoutId = parseInt(workoutIdString);
+  const { data, isLoading } = isNaN(workoutId)
+    ? trpc.workout.getBySlug.useQuery({
+        slug: workoutIdString,
+      })
+    : trpc.workout.read.useQuery({
+        id: workoutId,
+      });
   const workout = data as WorkoutWithAuthor;
   return (
     <AppLayout>
@@ -92,13 +100,29 @@ export default function WorkoutDetailPage() {
 
             <div className="relative pt-6 pb-16 sm:pb-24">
               <div className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6">
-                <div className="text-center">
+                <div className="flex flex-col items-center space-y-4 text-center">
                   <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
                     <span className="block">{workout?.name}</span>
                   </h1>
-                  <p className="mx-auto mt-3 max-w-md text-base text-neutral-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
+                  <p className="mx-auto max-w-md text-base text-neutral-500 sm:text-lg md:max-w-3xl md:text-xl">
                     {workout?.description}
                   </p>
+                  <button
+                    type="button"
+                    className="group inline-flex items-center font-medium text-amber-600 hover:text-amber-900"
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        `${getBaseUrl()}/app/workouts/${slug}`
+                      );
+                      toast.success("Link copied to clipboard!");
+                    }}
+                  >
+                    <LinkIcon
+                      className="h-5 w-5 text-amber-500 group-hover:text-amber-900"
+                      aria-hidden="true"
+                    />
+                    <span className="ml-2">Copy link</span>
+                  </button>
                 </div>
               </div>
             </div>

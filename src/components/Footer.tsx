@@ -63,7 +63,7 @@ const Footer = ({ className, isTight = false, isApp = false }: Props) => {
   return (
     <footer
       className={clsx(
-        "bg-gray-900 dark:bg-neutral-900",
+        "bg-neutral-900 dark:bg-neutral-900",
         className,
         isTight ? null : "mt-24 sm:mt-12"
       )}
@@ -83,8 +83,8 @@ const Footer = ({ className, isTight = false, isApp = false }: Props) => {
               <div key={name} className="px-5 py-2">
                 <NavLink
                   href={href}
-                  className="text-base text-zinc-400 hover:text-zinc-300 dark:text-caramel-200 dark:hover:text-caramel-400"
-                  activeClassName="text-zinc-200 dark:text-caramel-400"
+                  className="text-base text-neutral-400 hover:text-neutral-300 dark:text-caramel-200 dark:hover:text-caramel-400"
+                  activeClassName="text-neutral-200 dark:text-caramel-400"
                   exact={exact}
                 >
                   {name}
@@ -102,7 +102,7 @@ const Footer = ({ className, isTight = false, isApp = false }: Props) => {
               key={item.name}
               href={item.href}
               aria-label={item.name}
-              className="text-zinc-400 hover:text-zinc-300 dark:text-caramel-300"
+              className="text-neutral-400 hover:text-neutral-300 dark:text-caramel-300"
             >
               <>
                 <span className="sr-only">{item.name}</span>
@@ -120,8 +120,8 @@ const Footer = ({ className, isTight = false, isApp = false }: Props) => {
               <div key={name} className="px-5 py-2">
                 <NavLink
                   href={href}
-                  className="text-sm text-zinc-400 hover:text-zinc-300 dark:text-caramel-200"
-                  activeClassName="text-zinc-200 dark:text-caramel-400"
+                  className="text-sm text-neutral-400 hover:text-neutral-300 dark:text-caramel-200"
+                  activeClassName="text-neutral-200 dark:text-caramel-400"
                   exact={exact}
                 >
                   {name}
@@ -130,7 +130,7 @@ const Footer = ({ className, isTight = false, isApp = false }: Props) => {
             ))}
           </nav>
         )}
-        <p className="mt-8 text-center text-base text-zinc-400 dark:text-caramel-300">
+        <p className="mt-8 text-center text-base text-neutral-400 dark:text-caramel-300">
           &copy; 2022 Simple Fit. All rights reserved.
         </p>
       </div>

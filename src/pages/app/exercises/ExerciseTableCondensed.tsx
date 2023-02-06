@@ -3,8 +3,16 @@ import { XCircleIcon } from "@heroicons/react/20/solid";
 import type { Dispatch, SetStateAction } from "react";
 
 type ExerciseTableCondensedProps = {
-  exercises: Exercise[];
-  setExercises?: Dispatch<SetStateAction<Exercise[]>>;
+  exercises: Prisma.ExerciseGetPayload<{
+    include: { tags: true };
+  }>[];
+  setExercises?: Dispatch<
+    SetStateAction<
+      Prisma.ExerciseGetPayload<{
+        include: { tags: true };
+      }>[]
+    >
+  >;
 };
 
 export default function ExerciseTableCondensed({

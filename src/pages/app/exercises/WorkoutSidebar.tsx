@@ -1,20 +1,35 @@
 import type { Dispatch, SetStateAction } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { LinkIcon, QuestionMarkCircleIcon } from "@heroicons/react/20/solid";
-import type { Exercise } from "@prisma/client";
+import type { Exercise, Prisma } from "@prisma/client";
 import ExerciseTableCondensed from "./ExerciseTableCondensed";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { trpc } from "@/libs/utils/trpc";
+import { getBaseUrl } from "@/libs/utils/helpers";
 import { z } from "zod";
 import { toast } from "react-hot-toast";
+import { createId } from "@paralleldrive/cuid2";
+import { VisibilityType } from "@/types";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 type WorkoutSidebarProps = {
-  selectedExercises: Exercise[];
-  setSelectedExercises: Dispatch<SetStateAction<Exercise[]>>;
+  selectedExercises: Prisma.ExerciseGetPayload<{
+    include: { tags: true };
+  }>[];
+  setSelectedExercises: Dispatch<
+    SetStateAction<
+      Prisma.ExerciseGetPayload<{
+        include: { tags: true };
+      }>[]
+    >
+  >;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
@@ -25,9 +40,21 @@ export default function WorkoutSidebar({
   open,
   setOpen,
 }: WorkoutSidebarProps) {
+  const { data: session } = useSession();
+  const [slug, _] = useState(createId());
+
+  useEffect(() => {
+    console.log(slug);
+  }, [slug]);
+
   const FormSchema = z.object({
     name: z.string().min(2).max(100),
     description: z.string().min(2).max(140).optional(),
+    visibility: z.union([
+      z.literal(VisibilityType.PUBLIC),
+      z.literal(VisibilityType.PRIVATE),
+      z.literal(VisibilityType.UNLISTED),
+    ]),
   });
   type FormSchemaType = z.infer<typeof FormSchema>;
 
@@ -44,7 +71,17 @@ export default function WorkoutSidebar({
 
   const workout = trpc.workout.create.useMutation({
     onSuccess: () => {
-      toast.success("Workout created");
+      toast.success(
+        <div>
+          Workout created!{" "}
+          <Link
+            className="text-amber-600 hover:text-amber-900"
+            href={`${getBaseUrl()}/app/workouts/${slug}`}
+          >
+            Click here to view.
+          </Link>
+        </div>
+      );
       setSelectedExercises([]);
       setOpen(false);
       reset();
@@ -59,10 +96,13 @@ export default function WorkoutSidebar({
     const connectExercises = selectedExercises.map((e) => ({
       id: e.id,
     }));
-    workout.mutate({
+    const workoutData = {
       ...data,
+      slug,
       exercises: connectExercises,
-    });
+    };
+
+    workout.mutate(workoutData);
   };
 
   return (
@@ -131,6 +171,7 @@ export default function WorkoutSidebar({
                                   name="name"
                                   id="name"
                                   className="block w-full rounded-md border-neutral-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+                                  defaultValue={`${session?.user?.name}'s New Workout`}
                                 />
                               </div>
                             </div>
@@ -148,7 +189,9 @@ export default function WorkoutSidebar({
                                   name="description"
                                   rows={4}
                                   className="block w-full rounded-md border-neutral-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
-                                  defaultValue={""}
+                                  defaultValue={`A workout focused on ${selectedExercises?.[0]?.tags
+                                    .map((t) => t.name)
+                                    .join(", ")}.`}
                                 />
                               </div>
                             </div>
@@ -163,29 +206,30 @@ export default function WorkoutSidebar({
                             </div>
                             <fieldset>
                               <legend className="text-sm font-medium text-neutral-900">
-                                Privacy
+                                Visibility
                               </legend>
                               <div className="mt-2 space-y-5">
                                 <div className="relative flex items-start">
                                   <div className="absolute flex h-5 items-center">
                                     <input
-                                      id="privacy-public"
-                                      name="privacy"
-                                      aria-describedby="privacy-public-description"
+                                      {...register("visibility")}
+                                      id="visibility-public"
+                                      aria-describedby="visibility-public-description"
                                       type="radio"
+                                      value={VisibilityType.PUBLIC}
                                       className="h-4 w-4 border-neutral-300 text-amber-600 focus:ring-amber-500"
                                       defaultChecked
                                     />
                                   </div>
                                   <div className="pl-7 text-sm">
                                     <label
-                                      htmlFor="privacy-public"
+                                      htmlFor="visibility-public"
                                       className="font-medium text-neutral-900"
                                     >
                                       Public access
                                     </label>
                                     <p
-                                      id="privacy-public-description"
+                                      id="visibility-public-description"
                                       className="text-neutral-500"
                                     >
                                       Everyone will be able to see this workout.
@@ -196,22 +240,23 @@ export default function WorkoutSidebar({
                                   <div className="relative flex items-start">
                                     <div className="absolute flex h-5 items-center">
                                       <input
-                                        id="privacy-private-to-workout"
-                                        name="privacy"
-                                        aria-describedby="privacy-private-to-workout-description"
+                                        {...register("visibility")}
+                                        id="visibility-unlisted-to-workout"
+                                        aria-describedby="visibility-unlisted-to-workout-description"
                                         type="radio"
+                                        value={VisibilityType.UNLISTED}
                                         className="h-4 w-4 border-neutral-300 text-amber-600 focus:ring-amber-500"
                                       />
                                     </div>
                                     <div className="pl-7 text-sm">
                                       <label
-                                        htmlFor="privacy-private-to-workout"
+                                        htmlFor="visibility-unlisted-to-workout"
                                         className="font-medium text-neutral-900"
                                       >
                                         Unlisted
                                       </label>
                                       <p
-                                        id="privacy-private-to-workout-description"
+                                        id="visibility-unlisted-to-workout-description"
                                         className="text-neutral-500"
                                       >
                                         Only users with the link can see this
@@ -224,22 +269,23 @@ export default function WorkoutSidebar({
                                   <div className="relative flex items-start">
                                     <div className="absolute flex h-5 items-center">
                                       <input
-                                        id="privacy-private"
-                                        name="privacy"
-                                        aria-describedby="privacy-private-to-workout-description"
+                                        {...register("visibility")}
+                                        id="visibility-private"
+                                        aria-describedby="visibility-private-to-workout-description"
                                         type="radio"
+                                        value={VisibilityType.PRIVATE}
                                         className="h-4 w-4 border-neutral-300 text-amber-600 focus:ring-amber-500"
                                       />
                                     </div>
                                     <div className="pl-7 text-sm">
                                       <label
-                                        htmlFor="privacy-private"
+                                        htmlFor="visibility-private"
                                         className="font-medium text-neutral-900"
                                       >
                                         Private to you
                                       </label>
                                       <p
-                                        id="privacy-private-description"
+                                        id="visibility-private-description"
                                         className="text-neutral-500"
                                       >
                                         You are the only one able to access this
@@ -250,34 +296,6 @@ export default function WorkoutSidebar({
                                 </div>
                               </div>
                             </fieldset>
-                          </div>
-                          <div className="pt-4 pb-6">
-                            <div className="flex text-sm">
-                              <a
-                                href="#"
-                                className="group inline-flex items-center font-medium text-amber-600 hover:text-amber-900"
-                              >
-                                <LinkIcon
-                                  className="h-5 w-5 text-amber-500 group-hover:text-amber-900"
-                                  aria-hidden="true"
-                                />
-                                <span className="ml-2">Copy link</span>
-                              </a>
-                            </div>
-                            <div className="mt-4 flex text-sm">
-                              <a
-                                href="#"
-                                className="group inline-flex items-center text-neutral-500 hover:text-neutral-900"
-                              >
-                                <QuestionMarkCircleIcon
-                                  className="h-5 w-5 text-neutral-400 group-hover:text-neutral-500"
-                                  aria-hidden="true"
-                                />
-                                <span className="ml-2">
-                                  Learn more about sharing
-                                </span>
-                              </a>
-                            </div>
                           </div>
                         </div>
                       </div>

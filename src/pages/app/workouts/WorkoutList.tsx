@@ -3,43 +3,16 @@ import {
   InformationCircleIcon,
   UsersIcon,
 } from "@heroicons/react/20/solid";
-import type { Exercise, Tag, User, Workout } from "@prisma/client";
+import type { Prisma, Tag, User, Workout } from "@prisma/client";
 import Link from "next/link";
 import ExerciseTableCondensed from "../exercises/ExerciseTableCondensed";
 
-const positions = [
-  {
-    id: 1,
-    title: "Back End Developer",
-    type: "Full-time",
-    location: "Remote",
-    department: "Engineering",
-    closeDate: "2020-01-07",
-    closeDateFull: "January 7, 2020",
-  },
-  {
-    id: 2,
-    title: "Front End Developer",
-    type: "Full-time",
-    location: "Remote",
-    department: "Engineering",
-    closeDate: "2020-01-07",
-    closeDateFull: "January 7, 2020",
-  },
-  {
-    id: 3,
-    title: "User Interface Designer",
-    type: "Full-time",
-    location: "Remote",
-    department: "Design",
-    closeDate: "2020-01-14",
-    closeDateFull: "January 14, 2020",
-  },
-];
 export type WorkoutWithAuthor = Workout & {
   author: Pick<User, "id" | "name">;
   tags: Tag[];
-  exercises: Exercise[];
+  exercises: Prisma.ExerciseGetPayload<{
+    include: { tags: true };
+  }>[];
 };
 type WorkoutListProps = {
   workouts: WorkoutWithAuthor[];
@@ -55,7 +28,7 @@ export default function WorkoutList({ workouts }: WorkoutListProps) {
             className="m-1 rounded-lg bg-neutral-50 shadow-md dark:bg-neutral-900"
           >
             <Link
-              href={`/app/workouts/${workout.id}`}
+              href={`/app/workouts/${workout.slug}`}
               className="block rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
             >
               <div className="px-4 py-4 sm:px-6">

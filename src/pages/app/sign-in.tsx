@@ -47,7 +47,7 @@ export default function SignIn() {
             {session ? (
               <h2>hi {session.user?.name}</h2>
             ) : (
-              <h2 className="dark:text-zinc-50dark:text-zinc-50 mt-6 text-3xl font-bold tracking-tight text-neutral-900 dark:text-zinc-50 dark:text-neutral-50">
+              <h2 className="dark:text-neutral-50dark:text-neutral-50 mt-6 text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 dark:text-neutral-50">
                 Sign in to your account
               </h2>
             )}
@@ -73,7 +73,7 @@ export default function SignIn() {
                   <div>
                     <button
                       onClick={() => signIn("google")}
-                      className="inline-flex w-full justify-center rounded-md border border-neutral-300 bg-zinc-50 py-2 px-4 text-sm font-medium text-neutral-500 shadow-sm hover:bg-neutral-50"
+                      className="inline-flex w-full justify-center rounded-md border border-neutral-300 bg-neutral-50 py-2 px-4 text-sm font-medium text-neutral-500 shadow-sm hover:bg-neutral-50"
                     >
                       <span className="sr-only">Sign in with Google</span>
                       <svg
@@ -89,7 +89,7 @@ export default function SignIn() {
                   <div>
                     <button
                       onClick={() => signIn("twitter")}
-                      className="inline-flex w-full justify-center rounded-md border border-neutral-300 bg-zinc-50 py-2 px-4 text-sm font-medium text-neutral-500 shadow-sm hover:bg-neutral-50"
+                      className="inline-flex w-full justify-center rounded-md border border-neutral-300 bg-neutral-50 py-2 px-4 text-sm font-medium text-neutral-500 shadow-sm hover:bg-neutral-50"
                     >
                       <span className="sr-only">Sign in with Twitter</span>
                       <svg
@@ -113,7 +113,7 @@ export default function SignIn() {
                   <div className="w-full border-t border-neutral-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="bg-zinc-50 px-2 text-neutral-500 dark:bg-neutral-900 dark:text-neutral-100">
+                  <span className="bg-neutral-50 px-2 text-neutral-500 dark:bg-neutral-900 dark:text-neutral-100">
                     Or continue with
                   </span>
                 </div>
@@ -147,7 +147,7 @@ export default function SignIn() {
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-md border border-transparent bg-amber-600 py-2 px-4 text-sm font-medium text-zinc-50 shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+                    className="flex w-full justify-center rounded-md border border-transparent bg-amber-600 py-2 px-4 text-sm font-medium text-neutral-50 shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
                   >
                     Send magic link
                   </button>
